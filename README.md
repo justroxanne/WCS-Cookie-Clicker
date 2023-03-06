@@ -1,0 +1,1 @@
+# WCS-Cookie-Clicker
