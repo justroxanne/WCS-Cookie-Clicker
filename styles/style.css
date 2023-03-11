@@ -5,8 +5,9 @@
 }
 
 body{
-    background-image: url(./FinalImages/another-background.jpeg);
+    background-image: url("/FinalImages/background.jpg");
     min-height: 100vh;
+    background-size: contain;
 }
 
 button{
