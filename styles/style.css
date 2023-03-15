@@ -1,15 +1,15 @@
 @font-face {
-    font-family: 'StarJedi';
-    src: url('/Fonts/star_jedi/Starjedi.ttf');
+  font-family: 'StarJedi';
+  src: url('/Fonts/star_jedi/Starjedi.ttf');
 }
 
 :root {
-    --main_color: #3C415C;
-    --second_color: rgb(17, 17, 90);
-    --main_fontSize: 1.3rem;
-    --main_weight: 600;
-    --font_family: "StarJedi";
-    --back_CounterColor: rgba(247, 247, 247, 0.454);
+  --main_color: #3c415c;
+  --second_color: rgb(17, 17, 90);
+  --main_fontSize: 1.3rem;
+  --main_weight: 600;
+  --font_family: 'StarJedi';
+  --back_CounterColor: rgba(247, 247, 247, 0.454);
 }
 
 * {
@@ -19,12 +19,16 @@
 }
 
 body {
-    background-image: url("/FinalImages/background-mobile.jpg");
-    height: 100vh;
-    width: 100vw;
-    background-size: cover;
-    font-family: var(--font_family);
-    letter-spacing: 0.1em;
+  background-image: url('/FinalImages/background-mobile.jpg');
+  height: 100vh;
+  width: 100vw;
+  background-size: cover;
+  font-family: var(--font_family);
+  letter-spacing: 0.1em;
+}
+
+main {
+  margin: 1em 0;
 }
 
 /*  header */
@@ -38,10 +42,10 @@ header {
 .counter-container {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-evenly;
   height: 100%;
-  width: 70%;
-  margin: 0.5em 0 0 0.5em;
+  width: 60%;
+  margin: 0 0 0 0.4em;
 }
 
 .counter-size {
@@ -56,91 +60,92 @@ header {
 .param-container {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   height: 100%;
-  width: 30%;
+  width: 40%;
 }
 
 .counter-style {
-    border-radius: 20px;
-    background: var(--back_CounterColor);
-    font-size: var(--main_fontSize);
-    color: var(--main_color);
-    font-weight: var(--main_weight);
-    /* text-align: center; */
+  border-radius: 20px;
+  background: var(--back_CounterColor);
+  font-size: var(--main_fontSize);
+  color: var(--main_color);
+  font-weight: var(--main_weight);
+  /* text-align: center; */
 }
 
-
 button {
-    background: transparent;
-    border: none !important;
-    font-size: 0;
-    margin: auto;
-    padding: 0;
+  background: transparent;
+  border: none !important;
+  font-size: 0;
+  margin: auto;
+  padding: 0;
 }
 
 /* Clicker and helpers style with a grid */
 
 .clicker_container {
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    grid-template-rows: repeat(15, 1fr);
-     
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(15, 1fr);
 }
 
 .wookie_clicker {
-    grid-column: 4 / 10;
-    grid-row: 2 / 11;
+  grid-column: 4 / 10;
+  grid-row: 2 / 11;
 }
 
 .ewok {
-    grid-column: 1 / 4;
-    grid-row: 8 / 11;
+  grid-column: 1 / 4;
+  grid-row: 8 / 11;
 }
 
 .C3PO {
-    grid-column: 2 / 5;
-    grid-row: 11 / 14;
+  grid-column: 2 / 5;
+  grid-row: 11 / 14;
 }
 
 .R2D2 {
-    grid-column: 4 / 7;
-    grid-row: 13 / 16;
+  grid-column: 4 / 7;
+  grid-row: 13 / 16;
 }
 
 .yoda {
-    grid-column: 7 / 10;
-    grid-row: 13 / 16;
+  grid-column: 7 / 10;
+  grid-row: 13 / 16;
 }
 
 .xwing {
-    grid-column: 9 / 12;
-    grid-row: 11 / 14;
+  grid-column: 9 / 12;
+  grid-row: 11 / 14;
 }
 
 .falcon {
-    grid-column: 10 / 13;
-    grid-row: 8 / 11;
+  grid-column: 10 / 13;
+  grid-row: 8 / 11;
 }
-
 
 .wookie_clicker:active {
-    transform: scale(0.9);
+  transform: scale(0.9);
 }
 
-
-.R2D2, .falcon, .xwing, .yoda {
-    filter : saturate(0);
+.R2D2,
+.falcon,
+.xwing,
+.yoda {
+  filter: saturate(0);
 }
 
 /* Footer style */
 
 footer {
-    height: 10vh;
-    width: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: auto;
+  height: 10vh;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
 }
 
 /* Settings style */
