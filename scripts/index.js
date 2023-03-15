@@ -41,10 +41,22 @@ for (let i = 0; i < allCounter.length; i++) {
 // Image Death Star dans paramButton
 console.log(
   (paramContainer.innerHTML =
-    '<img src="./FinalImages/deathStar.png" alt="deathStar kawaii" width="70%">')
+    '<img src="./FinalImages/deathStar.png" alt="deathStar kawaii" width="50%">')
 );
 
 // Application du style au compteur manuel
 manualCounter.classList.add('counter-style');
 
-//creation du boutton settings
+//creation du bouton settings
+/* 
+startButton.addEventListener('click', function () {
+  overlay.style.display = 'flex';
+});
+ */
+
+//Sortie de l'overlay si on clique dessus - a modifier avec un bouton d'exit
+//preventDefault pour eviter de reset la saisie des users
+/* overlay.addEventListener('click', function (e) {
+  e.preventDefault;
+  overlay.style.display = 'none';
+}); */
