@@ -1,14 +1,14 @@
 @font-face {
     font-family: 'StarJedi';
-    src: url('/Fonts/star_jedi/Starjedi.ttf')
+    src: url('/Fonts/star_jedi/Starjedi.ttf');
 }
 
 :root {
-    --main_color: rgb(171, 135, 179);
+    --main_color: #3C415C;
     --second_color: rgb(17, 17, 90);
     --main_fontSize: 1.3rem;
     --main_weight: 600;
-    --font_family: "Segoe UI", verdana;
+    --font_family: "StarJedi";
     --back_CounterColor: rgba(247, 247, 247, 0.454);
 }
 
@@ -23,30 +23,34 @@ body {
     height: 100vh;
     width: 100vw;
     background-size: cover;
+    font-family: var(--font_family);
+    letter-spacing: 0.1em;
 }
 
 /*  header */
 
 header {
   width: 100%;
-  height: 20%;
+  height: 30%;
   display: flex;
 }
 
 .counter-container {
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: space-between;
   height: 100%;
   width: 70%;
+  margin: 0.5em 0 0 0.5em;
 }
 
 .counter-size {
   width: 100%;
   height: 30%;
-  border: 4px white solid;
   display: flex;
   align-items: center;
+  padding-left: 0.3em;
+  padding-bottom: 0.17em;
 }
 
 .param-container {
@@ -55,6 +59,16 @@ header {
   height: 100%;
   width: 30%;
 }
+
+.counter-style {
+    border-radius: 20px;
+    background: var(--back_CounterColor);
+    font-size: var(--main_fontSize);
+    color: var(--main_color);
+    font-weight: var(--main_weight);
+    /* text-align: center; */
+}
+
 
 button {
     background: transparent;
@@ -122,20 +136,10 @@ button {
 
 footer {
     height: 10vh;
+    width: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-footer>p {
-    padding-top: 10px;
-    height: 3rem;
-    width: 50%;
-    border-radius: 20px;
-    background: var(--back_CounterColor);
-    font-size: var(--main_fontSize);
-    color: var(--main_color);
-    font-weight: var(--main_weight);
-    text-align: center;
+    margin: auto;
 }
 

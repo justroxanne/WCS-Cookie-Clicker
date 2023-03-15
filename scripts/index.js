@@ -5,6 +5,7 @@ let paramButton = document.createElement('div');
 let wookiePerSecond = document.createElement('div');
 let wookiePerManuelclick = document.createElement('div');
 let laMoula = document.createElement('div');
+let manualCounter = document.querySelector('footer');
 
 //Positionnement des div counter-container et param-container dans le header
 header.appendChild(counterList);
@@ -26,6 +27,7 @@ let allCounter = document.querySelectorAll('.counter-container > div');
 console.log(allCounter);
 for (let i = 0; i < allCounter.length; i++) {
   allCounter[i].classList.add('counter-size');
+  allCounter[i].classList.add('counter-style');
   allCounter[i].setAttribute('id', `counter-${i + 1}`);
   let libele = allCounter[i].appendChild(document.createElement('p'));
   if (allCounter[i].id === 'counter-1') {
@@ -36,3 +38,7 @@ for (let i = 0; i < allCounter.length; i++) {
     libele.innerText = 'CPT3';
   }
 }
+
+// Application du style au compteur manuel
+
+manualCounter.classList.add('counter-style');
