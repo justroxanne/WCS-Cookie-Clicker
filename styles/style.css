@@ -1,7 +1,6 @@
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+@font-face {
+    font-family: 'StarJedi';
+    src: url('/Fonts/star_jedi/Starjedi.ttf')
 }
 
 :root {
@@ -13,11 +12,48 @@
     --back_CounterColor: rgba(247, 247, 247, 0.454);
 }
 
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 body {
     background-image: url("/FinalImages/background-mobile.jpg");
     height: 100vh;
     width: 100vw;
     background-size: cover;
+}
+
+/*  header */
+
+header {
+  width: 100%;
+  height: 20%;
+  display: flex;
+}
+
+.counter-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: 100%;
+  width: 70%;
+}
+
+.counter-size {
+  width: 100%;
+  height: 30%;
+  border: 4px white solid;
+  display: flex;
+  align-items: center;
+}
+
+.param-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 30%;
 }
 
 button {
@@ -26,13 +62,6 @@ button {
     font-size: 0;
     margin: auto;
     padding: 0;
-}
-
-/* Font download */
-
-@font-face {
-    font-family: 'StarJedi';
-    src: url('/Fonts/star_jedi/Starjedi.ttf')
 }
 
 /* Clicker and helpers style with a grid */
