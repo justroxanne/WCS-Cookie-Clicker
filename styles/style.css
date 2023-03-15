@@ -147,3 +147,103 @@ footer {
   align-items: center;
   margin: auto;
 }
+
+/* Settings style */
+/*
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-image: url("../FinalImages/background-mobile.jpg");
+  background-size: cover;
+  width: 100vw;
+  height: 100vh;
+  font-family: "StarJedi";
+  font-size: 1em;
+  letter-spacing: 0.1em;
+}
+
+.settings-container {
+  height: 18%;
+  width: 100%;
+}
+
+.settings {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: rgba(255, 255, 255, 0.5);
+  margin: 1em;
+  padding: 1em;
+  border-radius: 1em;
+  border: 0.1em black solid;
+  height: 100%;
+  gap: 0.5em;
+}
+
+.language {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.darkmode {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 1em;
+}
+
+.on {
+  background: #02f602;
+  width: 2em;
+  height: 2em;
+  border-radius: 50% 50%;
+  border: 0.1em black solid;
+}
+
+.off {
+  background: #af0404;
+  width: 2em;
+  height: 2em;
+  border-radius: 50% 50%;
+  border: 0.1em black solid;
+}
+
+.helpers {
+  height: 75%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-content: center;
+  gap: 0.4em;
+  margin: 1em;
+  margin-top: 2em;
+  background-color: rgba(255, 255, 255, 0.5);
+  padding: 1em;
+  border-radius: 1em;
+  border: 0.1em black solid;
+}
+
+.helper-position {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.8em;
+}
+
+#helperssetting {
+  justify-content: center;
+  align-content: center;
+  text-align: center;
+}
+
+img {
+  width: 2.5em;
+  height: auto;
+}
+*/
