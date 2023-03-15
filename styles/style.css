@@ -4,13 +4,65 @@
   padding: 0;
 }
 
-body {
-  background-image: url("/FinalImages/background-mobile.jpg");
-  background-size: contain;
+body{
+    background-image: url("/FinalImages/background-mobile.jpg");
+    height: 100vh;
+    width: 100vw;
+    background-size: cover;
 }
 
-button {
-  background: transparent;
-  border: none !important;
-  font-size: 0;
+button{
+background: transparent;
+border:none !important;
+font-size:0;
+margin: auto;
+padding: 0;
+}
+
+.clicker_container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+     
+}
+
+.wookie_clicker {
+    grid-column: 2 / 4;
+    grid-row: 1 / 5;
+}
+
+.ewok {
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+}
+
+.C3PO {
+    grid-column: 1 / 1;
+    grid-row: 4 / 5;
+}
+
+.R2D2 {
+    grid-column: 2 / 3;
+    grid-row: 5 / 6;
+}
+
+.yoda {
+    grid-column: 3 / 4;
+    grid-row: 5 / 6;
+}
+
+.xwing {
+    grid-column: 4 / 5;
+    grid-row: 4 / 5;
+}
+
+.falcon {
+    grid-column: 4 / 5;
+    grid-row: 2 / 3;
+}
+
+
+.wookie_clicker :active {
+    transform: scale(0.9);
+>>>>>>> a658c407987d410a6846f6874febc1851fbd0f31
 }
