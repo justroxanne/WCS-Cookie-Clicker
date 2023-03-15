@@ -4,19 +4,28 @@
     padding: 0;
 }
 
-body{
+:root {
+    --main_color: rgb(171, 135, 179);
+    --second_color: rgb(17, 17, 90);
+    --main_fontSize: 1.3rem;
+    --main_weight: 600;
+    --font_family: "Segoe UI", verdana;
+    --back_CounterColor: rgba(247, 247, 247, 0.454);
+}
+
+body {
     background-image: url("/FinalImages/background-mobile.jpg");
     height: 100vh;
     width: 100vw;
     background-size: cover;
 }
 
-button{
-background: transparent;
-border:none !important;
-font-size:0;
-margin: auto;
-padding: 0;
+button {
+    background: transparent;
+    border: none !important;
+    font-size: 0;
+    margin: auto;
+    padding: 0;
 }
 
 /* Font download */
@@ -75,6 +84,29 @@ padding: 0;
     transform: scale(0.9);
 }
 
+
 .R2D2, .falcon, .xwing, .yoda {
     filter : saturate(0);
 }
+
+/* Footer style */
+
+footer {
+    height: 10vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+footer>p {
+    padding-top: 10px;
+    height: 3rem;
+    width: 50%;
+    border-radius: 20px;
+    background: var(--back_CounterColor);
+    font-size: var(--main_fontSize);
+    color: var(--main_color);
+    font-weight: var(--main_weight);
+    text-align: center;
+}
+
