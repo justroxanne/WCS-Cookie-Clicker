@@ -45,6 +45,9 @@ for (let i = 0; i < allCounter.length; i++) {
     libele.innerText = 'Bank :';
   }
 }
+
+document.getElementById('data-3').innerText = 'Maxi Woo';
+
 // Image Death Star dans paramButton
 paramContainer.innerHTML =
   '<img src="./FinalImages/deathStar.png" alt="deathStar kawaii" width="50%" class="deathstar-settings">';
@@ -69,14 +72,11 @@ returnButton.addEventListener('click', function (e) {
 });
 
 // Creation du listener sur le wookie qui permettra d'ajouter des clicks à chaque click
-
 let clickWookie = document.querySelector('.wookie_clicker');
-let count = 0; 
 
-const nbClick = clickWookie.addEventListener('click', function() {
-  count ++;
+let count = 0;
+document.querySelector('footer>p').innerText = `${count} clicks`;
+clickWookie.addEventListener('click', function () {
+  count++;
   document.querySelector('footer>p').innerText = `${count} clicks`;
-})
-
-
-
+});
