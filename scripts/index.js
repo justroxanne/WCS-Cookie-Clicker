@@ -9,23 +9,27 @@ let laMoulaTotal = document.createElement('div'); //credit total
 let manualCounter = document.querySelector('footer');
 let settingsPanel = document.querySelector('.settings-panel');
 let returnButton = document.querySelector('.return-button');
-
+let clickWookie = document.querySelector('.wookie_clicker');
+let credPerSecondPower = 0;
+let credPerSecondTotal = 0;
+let credPerOrganicClickPower = 1;
+let credPerOrganicClickTotal = 0;
+let OrganicClickTotal = 0;
 
 //Positionnement des div counter-container et param-container dans le header
 header.appendChild(counterList);
 header.appendChild(paramContainer);
 
 //Dimensionnement des divs counter-container et param-container
-counterList.classList.add("counter-container");
+counterList.classList.add('counter-container');
 
 //Dimensionnement du bouton des parametres via une classe
-paramContainer.classList.add("param-container");
+paramContainer.classList.add('param-container');
 
 //Positionnement des 3 counters dans la div counter-poisition
 counterList.appendChild(moulaPerSecond);
 counterList.appendChild(moulaPerManuelclick);
 counterList.appendChild(laMoulaTotal);
-
 
 //boucle d'attribution de la classe  counter-size, counter style a tous les counters
 
@@ -45,11 +49,35 @@ for (let i = 0; i < allCounter.length; i++) {
   } else if (allCounter[i].id === 'counter-2') {
     libele.innerText = 'Credit / clic :';
   } else {
-    libele.innerText = "Bank :";
+    libele.innerText = 'Bank :';
   }
 }
 
-document.getElementById('data-3').innerText = 'Maxi Woo';
+//creation de la fonction du counter clic/second
+
+function increase() {
+  for (let i = 0; i < 1; i++) {
+    credPerSecondTotal = credPerSecondTotal + credPerSecondPower;
+    document.querySelector('#data-3').innerHTML =
+      credPerOrganicClickTotal + credPerSecondTotal;
+  }
+}
+setInterval(increase, 1000);
+
+// Creation du listener sur le wookie qui permettra d'ajouter des clicks à chaque click
+
+document.querySelector('footer>p').innerText = `${OrganicClickTotal} clicks`;
+
+clickWookie.addEventListener('click', function () {
+  OrganicClickTotal++;
+  credPerOrganicClickTotal =
+    credPerOrganicClickTotal + credPerOrganicClickPower;
+  document.querySelector('footer>p').innerText = `${OrganicClickTotal} clicks`;
+});
+
+document.querySelector('#data-1').innerHTML = credPerSecondPower;
+
+document.querySelector('#data-2').innerHTML = credPerOrganicClickPower;
 
 // Image Death Star dans paramButton
 paramContainer.innerHTML =
@@ -59,17 +87,7 @@ paramContainer.innerHTML =
 let settingsButton = document.querySelector('.deathstar-settings');
 
 // Application du style au compteur manuel
-manualCounter.classList.add("counter-style");
-
-
-//creation de la fonction du counter clic/second
-let number = 0;
-function increase() {
-  for (let i = 0; i < 1; i++) {
-    moulaPerSecond.innerHTML = number += 5;
-  }
-}
-setInterval(increase, 1000);
+manualCounter.classList.add('counter-style');
 
 //creation du bouton settings
 settingsButton.addEventListener('click', function () {
@@ -83,14 +101,3 @@ returnButton.addEventListener('click', function (e) {
   e.preventDefault;
   settingsPanel.style.display = 'none';
 });
-
-// Creation du listener sur le wookie qui permettra d'ajouter des clicks à chaque click
-let clickWookie = document.querySelector('.wookie_clicker');
-
-let count = 0;
-document.querySelector('footer>p').innerText = `${count} clicks`;
-clickWookie.addEventListener('click', function () {
-  count++;
-  document.querySelector('footer>p').innerText = `${count} clicks`;
-});
-
