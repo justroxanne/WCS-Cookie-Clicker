@@ -8,7 +8,7 @@
 :root {
   --main_color: #3c415c;
   --second_color: rgb(17, 17, 90);
-  --main_fontSize: 1.3rem;
+  --main_fontSize: 1rem;
   --main_weight: 600;
   --font_family: 'StarJedi';
   --back_CounterColor: rgba(247, 247, 247, 0.454);
@@ -21,10 +21,6 @@
     transform: scale(0.8);
   }
 }
-
-
-
-
 
 /* Mise en page du body */
 
@@ -48,10 +44,6 @@ body {
   padding: 0.5em;
 }
 
-
-
-
-
 /* Mise en page du header */
 
 header {
@@ -60,25 +52,24 @@ header {
   display: flex;
 }
 
-
-
 /* Mise en page des counters */
 
 .counter-container {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-center;
   height: 100%;
   width: 70%;
+  gap: 1em;
 }
 
 .counter-size {
   width: 100%;
-  height: 30%;
+  min-height: 20%;
   display: flex;
   align-items: center;
-  gap: 0.9em;
-  padding: 0 0 0.2em 0.2em;
+  gap: 0.8em;
+  padding: 0 0 0.1em 0.4em;
 }
 
 .counter-style {
@@ -97,9 +88,6 @@ header {
   height: 100%;
   width: 30%;
 }
-
-
-
 
 /* Settings style */
 
@@ -193,10 +181,6 @@ header {
   height: auto;
 }
 
-
-
-
-
 /* Clicker and helpers style with a grid */
 
 .helper {
@@ -256,9 +240,6 @@ header {
   filter: saturate(0);
 }
 
-
-
-
 /* Footer style */
 
 footer {
@@ -270,14 +251,11 @@ footer {
   /*   margin: auto; */
 }
 
-
-
-
 /* Adaptation au format Desktop avec l'utilisation des media queries */
 
 @media screen and (min-width: 800px) {
   body {
-    background-image: url("/FinalImages/background-desktop.jpg");
+    background-image: url('/FinalImages/background-desktop.jpg');
     background-size: cover;
   }
 
@@ -285,38 +263,44 @@ footer {
     flex-direction: row;
     gap: 1em;
     width: 90%;
+    height: 100%;
   }
 
-   .clicker_container {
+  .param-container {
+    height: 100%;
+  }
+
+  .clicker_container {
     display: flex;
     align-items: center;
-    
   }
 
   .yoda {
-    width: 40%;
+    width: 25%;
   }
 
   footer {
     width: 30%;
   }
 
-  .deathstar-settings{
-    width: 25%;
+  .deathstar-settings {
+    width: 22.5%;
   }
 
-  .settings-panel{
+  .settings-panel {
     background-image: url(/FinalImages/background-desktop.jpg);
   }
 
   .counter-size {
+    display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
     gap: 0;
-    height: 40%;
   }
 
   header {
-    height: 25%;
+    height: 10%;
   }
 }
