@@ -34,6 +34,8 @@ for (let i = 0; i < allCounter.length; i++) {
   allCounter[i].setAttribute('id', `counter-${i + 1}`);
   //+ creation des elements p dans chaque div de compteur
   let libele = allCounter[i].appendChild(document.createElement('p'));
+  let data = allCounter[i].appendChild(document.createElement('p'));
+  data.setAttribute('id', `data-${i + 1}`);
   //attribution du texte selon l'ID
   if (allCounter[i].id === 'counter-1') {
     libele.innerText = 'Credit / second :';
@@ -43,7 +45,6 @@ for (let i = 0; i < allCounter.length; i++) {
     libele.innerText = 'Bank :';
   }
 }
-
 // Image Death Star dans paramButton
 paramContainer.innerHTML =
   '<img src="./FinalImages/deathStar.png" alt="deathStar kawaii" width="50%" class="deathstar-settings">';
