@@ -60,3 +60,14 @@ startButton.addEventListener('click', function () {
   e.preventDefault;
   overlay.style.display = 'none';
 }); */
+
+// Creation du listener sur le wookie qui permettra d'ajouter des clicks à chaque click
+
+let clickWookie = document.querySelector('.wookie_clicker');
+let count = 0; 
+
+const nbClick = clickWookie.addEventListener('click', function() {
+  count ++;
+  document.querySelector('footer>p').innerText = `${count} clicks`;
+})
+
