@@ -37,6 +37,8 @@ for (let i = 0; i < allCounter.length; i++) {
   allCounter[i].setAttribute('id', `counter-${i + 1}`);
   //+ creation des elements p dans chaque div de compteur
   let libele = allCounter[i].appendChild(document.createElement('p'));
+  let data = allCounter[i].appendChild(document.createElement('p'));
+  data.setAttribute('id', `data-${i + 1}`);
   //attribution du texte selon l'ID
   if (allCounter[i].id === 'counter-1') {
     libele.innerText = 'Credit / second :';
@@ -46,6 +48,8 @@ for (let i = 0; i < allCounter.length; i++) {
     libele.innerText = "Bank :";
   }
 }
+
+document.getElementById('data-3').innerText = 'Maxi Woo';
 
 // Image Death Star dans paramButton
 paramContainer.innerHTML =
@@ -81,12 +85,12 @@ returnButton.addEventListener('click', function (e) {
 });
 
 // Creation du listener sur le wookie qui permettra d'ajouter des clicks à chaque click
-
 let clickWookie = document.querySelector('.wookie_clicker');
-let count = 0; 
 
-const nbClick = clickWookie.addEventListener('click', function() {
-  count ++;
+let count = 0;
+document.querySelector('footer>p').innerText = `${count} clicks`;
+clickWookie.addEventListener('click', function () {
+  count++;
   document.querySelector('footer>p').innerText = `${count} clicks`;
-})
+});
 
