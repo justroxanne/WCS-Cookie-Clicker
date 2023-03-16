@@ -59,10 +59,23 @@ settingsButton.addEventListener('click', function () {
   settingsPanel.style.display = 'flex';
 });
 
-//Sortie des settingssi on clique sur le death star
+//Sortie des settings si on clique sur le death star
 //preventDefault pour eviter de reset, verifier si necessaire
 
 returnButton.addEventListener('click', function (e) {
   e.preventDefault;
   settingsPanel.style.display = 'none';
 });
+
+// Creation du listener sur le wookie qui permettra d'ajouter des clicks à chaque click
+
+let clickWookie = document.querySelector('.wookie_clicker');
+let count = 0; 
+
+const nbClick = clickWookie.addEventListener('click', function() {
+  count ++;
+  document.querySelector('footer>p').innerText = `${count} clicks`;
+})
+
+
+

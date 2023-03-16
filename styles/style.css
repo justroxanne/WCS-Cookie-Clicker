@@ -12,6 +12,11 @@
     --back_CounterColor: rgba(247, 247, 247, 0.454);
 }
 
+@keyframes zoomOff {
+    from {}
+    to {transform: scale(0.9);}
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -213,7 +218,8 @@ header {
 }
 
 .wookie_clicker:active {
-  transform: scale(0.9);
+  animation:zoomOff;
+  animation-duration: 0.1s;
 }
 
 .R2D2,
