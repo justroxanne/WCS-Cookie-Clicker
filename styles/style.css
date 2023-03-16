@@ -1,3 +1,5 @@
+/* Initialisation des variables, typos et keyframes */
+
 @font-face {
   font-family: 'StarJedi';
   src: url('/Fonts/star_jedi/Starjedi.ttf');
@@ -12,6 +14,20 @@
   --back_CounterColor: rgba(247, 247, 247, 0.454);
 }
 
+@keyframes zoomOff {
+  from {
+  }
+  to {
+    transform: scale(0.8);
+  }
+}
+
+
+
+
+
+/* Mise en page du body */
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -25,13 +41,18 @@ body {
   background-size: cover;
   font-family: var(--font_family);
   letter-spacing: 0.1em;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5em;
 }
 
-main {
-  margin: 1em 0;
-}
 
-/*  header */
+
+
+
+/* Mise en page du header */
 
 header {
   width: 100%;
@@ -39,13 +60,16 @@ header {
   display: flex;
 }
 
+
+
+/* Mise en page des counters */
+
 .counter-container {
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: space-between;
   height: 100%;
-  width: 60%;
-  margin: 0 0 0 0.4em;
+  width: 70%;
 }
 
 .counter-size {
@@ -53,17 +77,8 @@ header {
   height: 30%;
   display: flex;
   align-items: center;
-  padding-left: 0.3em;
-  padding-bottom: 0.17em;
-}
-
-.param-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  width: 40%;
+  gap: 0.9em;
+  padding: 0 0 0.2em 0.2em;
 }
 
 .counter-style {
@@ -72,18 +87,121 @@ header {
   font-size: var(--main_fontSize);
   color: var(--main_color);
   font-weight: var(--main_weight);
-  /* text-align: center; */
 }
 
-button {
-  background: transparent;
-  border: none !important;
-  font-size: 0;
-  margin: auto;
-  padding: 0;
+.param-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-end;
+  height: 100%;
+  width: 30%;
 }
+
+
+
+
+/* Settings style */
+
+.settings-panel {
+  display: none; /* Hidden by default */
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  background-image: url('../FinalImages/background-mobile.jpg');
+  background-size: cover;
+  width: 100%; /* Full width (cover the whole page) */
+  height: 100%; /* Full height (cover the whole page) */
+  position: fixed; /* Sit on top of the page content */
+  color: var(--main_color);
+  z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+  cursor: pointer; /* Add a pointer on hover */
+}
+
+.settings-container {
+  height: 18%;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 1em;
+  border: 0.1em black solid;
+}
+
+.language {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.darkmode {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  /*  gap: 1em; */
+}
+
+.on {
+  background: #02f602;
+  width: 2em;
+  height: 2em;
+  border-radius: 50% 50%;
+  border: 0.1em black solid;
+}
+
+.off {
+  background: #af0404;
+  width: 2em;
+  height: 2em;
+  border-radius: 50% 50%;
+  border: 0.1em black solid;
+}
+
+.helpers {
+  height: 75%;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-content: center;
+  gap: 0.4em;
+  background-color: rgba(255, 255, 255, 0.5);
+  padding: 1em;
+  border-radius: 1em;
+  border: 0.1em black solid;
+}
+
+.helper-position {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.8em;
+}
+
+#helperssetting {
+  justify-content: center;
+  align-content: center;
+  text-align: center;
+}
+
+.helpers img,
+.language img {
+  width: 2.5em;
+  height: auto;
+}
+
+
+
+
 
 /* Clicker and helpers style with a grid */
+
+.helper {
+  text-align: center;
+}
 
 .clicker_container {
   display: grid;
@@ -127,7 +245,8 @@ button {
 }
 
 .wookie_clicker:active {
-  transform: scale(0.9);
+  animation: zoomOff;
+  animation-duration: 0.1s;
 }
 
 .R2D2,
@@ -137,6 +256,9 @@ button {
   filter: saturate(0);
 }
 
+
+
+
 /* Footer style */
 
 footer {
@@ -145,105 +267,56 @@ footer {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: auto;
+  /*   margin: auto; */
 }
 
-/* Settings style */
-/*
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
 
-body {
-  background-image: url("../FinalImages/background-mobile.jpg");
-  background-size: cover;
-  width: 100vw;
-  height: 100vh;
-  font-family: "StarJedi";
-  font-size: 1em;
-  letter-spacing: 0.1em;
-}
 
-.settings-container {
-  height: 18%;
-  width: 100%;
-}
 
-.settings {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  background-color: rgba(255, 255, 255, 0.5);
-  margin: 1em;
-  padding: 1em;
-  border-radius: 1em;
-  border: 0.1em black solid;
-  height: 100%;
-  gap: 0.5em;
-}
+/* Adaptation au format Desktop avec l'utilisation des media queries */
 
-.language {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  width: 100%;
-}
+@media screen and (min-width: 800px) {
+  body {
+    background-image: url("/FinalImages/background-desktop.jpg");
+    background-size: cover;
+  }
 
-.darkmode {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  gap: 1em;
-}
+  .counter-container {
+    flex-direction: row;
+    gap: 1em;
+    width: 90%;
+  }
 
-.on {
-  background: #02f602;
-  width: 2em;
-  height: 2em;
-  border-radius: 50% 50%;
-  border: 0.1em black solid;
-}
+   .clicker_container {
+    display: flex;
+    align-items: center;
+    
+  }
 
-.off {
-  background: #af0404;
-  width: 2em;
-  height: 2em;
-  border-radius: 50% 50%;
-  border: 0.1em black solid;
-}
+  .yoda {
+    width: 40%;
+  }
 
-.helpers {
-  height: 75%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-content: center;
-  gap: 0.4em;
-  margin: 1em;
-  margin-top: 2em;
-  background-color: rgba(255, 255, 255, 0.5);
-  padding: 1em;
-  border-radius: 1em;
-  border: 0.1em black solid;
-}
+  footer {
+    width: 30%;
+  }
 
-.helper-position {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 0.8em;
-}
+  .deathstar-settings{
+    width: 25%;
+  }
 
-#helperssetting {
-  justify-content: center;
-  align-content: center;
-  text-align: center;
-}
+  .settings-panel{
+    background-image: url(/FinalImages/background-desktop.jpg);
+  }
 
-img {
-  width: 2.5em;
-  height: auto;
+  .counter-size {
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 0;
+    height: 40%;
+  }
+
+  header {
+    height: 25%;
+  }
 }
-*/

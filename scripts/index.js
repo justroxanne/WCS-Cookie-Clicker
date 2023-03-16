@@ -1,4 +1,5 @@
 //Declaration des variables pour le DOM du header
+
 let header = document.querySelector('header');
 let counterList = document.createElement('div');
 let paramContainer = document.createElement('div');
@@ -6,6 +7,14 @@ let moulaPerSecond = document.createElement('div'); //credit genere automatiquem
 let moulaPerManuelclick = document.createElement('div'); //credit genere au clic
 let laMoulaTotal = document.createElement('div'); //credit total
 let manualCounter = document.querySelector('footer');
+let settingsPanel = document.querySelector('.settings-panel');
+let returnButton = document.querySelector('.return-button');
+let clickWookie = document.querySelector('.wookie_clicker');
+let credPerSecondPower = 0;
+let credPerSecondTotal = 0;
+let credPerOrganicClickPower = 1;
+let credPerOrganicClickTotal = 0;
+let OrganicClickTotal = 0;
 
 //Positionnement des div counter-container et param-container dans le header
 header.appendChild(counterList);
@@ -22,13 +31,19 @@ counterList.appendChild(moulaPerSecond);
 counterList.appendChild(moulaPerManuelclick);
 counterList.appendChild(laMoulaTotal);
 
-//boucle d'attribution de la classe  counter-size a tous les counters
+//boucle d'attribution de la classe  counter-size, counter style a tous les counters
+
 let allCounter = document.querySelectorAll('.counter-container > div');
 for (let i = 0; i < allCounter.length; i++) {
   allCounter[i].classList.add('counter-size');
   allCounter[i].classList.add('counter-style');
+  //attribution d'un ID (=1 par rapport a l'index)
   allCounter[i].setAttribute('id', `counter-${i + 1}`);
+  //+ creation des elements p dans chaque div de compteur
   let libele = allCounter[i].appendChild(document.createElement('p'));
+  let data = allCounter[i].appendChild(document.createElement('p'));
+  data.setAttribute('id', `data-${i + 1}`);
+  //attribution du texte selon l'ID
   if (allCounter[i].id === 'counter-1') {
     libele.innerText = 'Credit / second :';
   } else if (allCounter[i].id === 'counter-2') {
@@ -38,23 +53,51 @@ for (let i = 0; i < allCounter.length; i++) {
   }
 }
 
+//creation de la fonction du counter clic/second
+
+function increase() {
+  for (let i = 0; i < 1; i++) {
+    credPerSecondTotal = credPerSecondTotal + credPerSecondPower;
+    document.querySelector('#data-3').innerHTML =
+      credPerOrganicClickTotal + credPerSecondTotal;
+  }
+}
+setInterval(increase, 1000);
+
+// Creation du listener sur le wookie qui permettra d'ajouter des clicks à chaque click
+
+document.querySelector('footer>p').innerText = `${OrganicClickTotal} clicks`;
+
+clickWookie.addEventListener('click', function () {
+  OrganicClickTotal++;
+  credPerOrganicClickTotal =
+    credPerOrganicClickTotal + credPerOrganicClickPower;
+  document.querySelector('footer>p').innerText = `${OrganicClickTotal} clicks`;
+});
+
+document.querySelector('#data-1').innerHTML = credPerSecondPower;
+
+document.querySelector('#data-2').innerHTML = credPerOrganicClickPower;
+
 // Image Death Star dans paramButton
-console.log(
-  (paramContainer.innerHTML =
-    '<img src="./FinalImages/deathStar.png" alt="deathStar kawaii" width="70%">')
-);
+paramContainer.innerHTML =
+  '<img src="./FinalImages/deathStar.png" alt="deathStar kawaii" width="50%" class="deathstar-settings">';
+
+//Recuperation / Declaration ici du bouton des  setings (death star)  cree juste au dessus
+let settingsButton = document.querySelector('.deathstar-settings');
 
 // Application du style au compteur manuel
 manualCounter.classList.add('counter-style');
 
-//creation du boutton settings
+//creation du bouton settings
+settingsButton.addEventListener('click', function () {
+  settingsPanel.style.display = 'flex';
+});
 
-//creation de la fonction du counter clic/second
-let number = 0;
-function increase() {
-  for (let i = 0; i < 1; i++) {
-    moulaPerSecond.innerHTML = number += 5;
-  }
-}
+//Sortie des settings si on clique sur le death star
+//preventDefault pour eviter de reset, verifier si necessaire
 
-setInterval(increase, 1000);
+returnButton.addEventListener('click', function (e) {
+  e.preventDefault;
+  settingsPanel.style.display = 'none';
+});
