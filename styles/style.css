@@ -1,15 +1,20 @@
 @font-face {
-  font-family: 'StarJedi';
-  src: url('/Fonts/star_jedi/Starjedi.ttf');
+    font-family: 'StarJedi';
+    src: url('/Fonts/star_jedi/Starjedi.ttf');
 }
 
 :root {
-  --main_color: #3c415c;
-  --second_color: rgb(17, 17, 90);
-  --main_fontSize: 1.3rem;
-  --main_weight: 600;
-  --font_family: 'StarJedi';
-  --back_CounterColor: rgba(247, 247, 247, 0.454);
+    --main_color: #3C415C;
+    --second_color: rgb(17, 17, 90);
+    --main_fontSize: 1.3rem;
+    --main_weight: 600;
+    --font_family: "StarJedi";
+    --back_CounterColor: rgba(247, 247, 247, 0.454);
+}
+
+@keyframes zoomOff {
+    from {}
+    to {transform: scale(0.9);}
 }
 
 * {
@@ -19,16 +24,12 @@
 }
 
 body {
-  background-image: url('/FinalImages/background-mobile.jpg');
-  height: 100vh;
-  width: 100vw;
-  background-size: cover;
-  font-family: var(--font_family);
-  letter-spacing: 0.1em;
-}
-
-main {
-  margin: 1em 0;
+    background-image: url("/FinalImages/background-mobile.jpg");
+    height: 100vh;
+    width: 100vw;
+    background-size: cover;
+    font-family: var(--font_family);
+    letter-spacing: 0.1em;
 }
 
 /*  header */
@@ -42,10 +43,10 @@ header {
 .counter-container {
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: space-between;
   height: 100%;
-  width: 60%;
-  margin: 0 0 0 0.4em;
+  width: 70%;
+  margin: 0.5em 0 0 0.5em;
 }
 
 .counter-size {
@@ -64,17 +65,18 @@ header {
   align-items: flex-end;
   padding: 0.4em;
   height: 100%;
-  width: 40%;
+  width: 30%;
 }
 
 .counter-style {
-  border-radius: 20px;
-  background: var(--back_CounterColor);
-  font-size: var(--main_fontSize);
-  color: var(--main_color);
-  font-weight: var(--main_weight);
-  /* text-align: center; */
+    border-radius: 20px;
+    background: var(--back_CounterColor);
+    font-size: var(--main_fontSize);
+    color: var(--main_color);
+    font-weight: var(--main_weight);
+    /* text-align: center; */
 }
+
 
 /* Settings style */
 
@@ -216,7 +218,8 @@ header {
 }
 
 .wookie_clicker:active {
-  transform: scale(0.9);
+  animation:zoomOff;
+  animation-duration: 0.1s;
 }
 
 .R2D2,
