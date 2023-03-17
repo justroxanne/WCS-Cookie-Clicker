@@ -1,16 +1,28 @@
+/* Initialisation des variables, typos et keyframes */
+
 @font-face {
-    font-family: 'StarJedi';
-    src: url('/Fonts/star_jedi/Starjedi.ttf');
+  font-family: 'StarJedi';
+  src: url('/Fonts/star_jedi/Starjedi.ttf');
 }
 
 :root {
-    --main_color: #3C415C;
-    --second_color: rgb(17, 17, 90);
-    --main_fontSize: 1.3rem;
-    --main_weight: 600;
-    --font_family: "StarJedi";
-    --back_CounterColor: rgba(247, 247, 247, 0.454);
+  --main_color: #3c415c;
+  --second_color: rgb(17, 17, 90);
+  --main_fontSize: 1rem;
+  --main_weight: 600;
+  --font_family: 'StarJedi';
+  --back_CounterColor: rgba(247, 247, 247, 0.454);
 }
+
+@keyframes zoomOff {
+  from {
+  }
+  to {
+    transform: scale(0.8);
+  }
+}
+
+/* Mise en page du body */
 
 * {
   box-sizing: border-box;
@@ -19,15 +31,20 @@
 }
 
 body {
-    background-image: url("/FinalImages/background-mobile.jpg");
-    height: 100vh;
-    width: 100vw;
-    background-size: cover;
-    font-family: var(--font_family);
-    letter-spacing: 0.1em;
+  background-image: url('/FinalImages/background-mobile.jpg');
+  height: 100vh;
+  width: 100vw;
+  background-size: cover;
+  font-family: var(--font_family);
+  letter-spacing: 0.1em;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5em;
 }
 
-/*  header */
+/* Mise en page du header */
 
 header {
   width: 100%;
@@ -35,22 +52,32 @@ header {
   display: flex;
 }
 
+/* Mise en page des counters */
+
 .counter-container {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-center;
   height: 100%;
   width: 70%;
-  margin: 0.5em 0 0 0.5em;
+  gap: 1em;
 }
 
 .counter-size {
   width: 100%;
-  height: 30%;
+  min-height: 20%;
   display: flex;
   align-items: center;
-  padding-left: 0.3em;
-  padding-bottom: 0.17em;
+  gap: 0.8em;
+  padding: 0 0 0.1em 0.4em;
+}
+
+.counter-style {
+  border-radius: 20px;
+  background: var(--back_CounterColor);
+  font-size: var(--main_fontSize);
+  color: var(--main_color);
+  font-weight: var(--main_weight);
 }
 
 .param-container {
@@ -58,25 +85,14 @@ header {
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-end;
-  padding: 0.4em;
   height: 100%;
   width: 30%;
 }
 
-.counter-style {
-    border-radius: 20px;
-    background: var(--back_CounterColor);
-    font-size: var(--main_fontSize);
-    color: var(--main_color);
-    font-weight: var(--main_weight);
-    /* text-align: center; */
-}
-
-
 /* Settings style */
 
 .settings-panel {
-  display: flex; /* Hidden by default */
+  display: none; /* Hidden by default */
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
@@ -85,9 +101,8 @@ header {
   width: 100%; /* Full width (cover the whole page) */
   height: 100%; /* Full height (cover the whole page) */
   position: fixed; /* Sit on top of the page content */
-  color: white;
+  color: var(--main_color);
   z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
-  cursor: pointer; /* Add a pointer on hover */
 }
 
 .settings-container {
@@ -213,14 +228,19 @@ header {
 }
 
 .wookie_clicker:active {
-  transform: scale(0.9);
+  animation: zoomOff;
+  animation-duration: 0.1s;
 }
 
 .R2D2,
 .falcon,
 .xwing,
 .yoda {
-  filter: saturate(0);
+  filter: saturate(0) opacity(60%);
+}
+
+.helper:hover{
+  filter: none;
 }
 
 /* Footer style */
@@ -231,5 +251,55 @@ footer {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: auto;
+  /*   margin: auto; */
+}
+
+/* Adaptation au format Desktop avec l'utilisation des media queries */
+
+@media screen and (min-width: 800px) {
+  body {
+    background-image: url('/FinalImages/background-desktop.jpg');
+    background-size: cover;
+  }
+
+  .counter-container {
+    flex-direction: row;
+    gap: 1em;
+    width: 90%;
+    height: 100%;
+  }
+
+  .param-container {
+    height: 100%;
+  }
+
+  .clicker_container {
+    display: flex;
+    align-items: center;
+  }
+
+  footer {
+    width: 30%;
+  }
+
+  .deathstar-settings {
+    width: 22.5%;
+  }
+
+  .settings-panel {
+    background-image: url(/FinalImages/background-desktop.jpg);
+  }
+
+  .counter-size {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    gap: 0;
+  }
+
+  header {
+    height: 10%;
+  }
 }
