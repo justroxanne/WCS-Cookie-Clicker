@@ -10,7 +10,7 @@ let manualCounter = document.querySelector('footer');
 let settingsPanel = document.querySelector('.settings-panel');
 let returnButton = document.querySelector('.return-button');
 let clickWookie = document.querySelector('.wookie_clicker');
-let credPerSecondPower = 0;
+let credPerSecondPower = 0.5;
 let credPerSecondTotal = 0;
 let credPerOrganicClickPower = 1;
 let credPerOrganicClickTotal = 0;
@@ -58,13 +58,11 @@ for (let i = 0; i < allCounter.length; i++) {
 function increase() {
   for (let i = 0; i < 1; i++) {
     credPerSecondTotal = credPerSecondTotal + credPerSecondPower;
-    document.querySelector('#data-3').innerHTML =
-      credPerOrganicClickTotal + credPerSecondTotal;
   }
 }
 setInterval(increase, 1000);
 
-// Creation du listener sur le wookie qui permettra d'ajouter des clicks à chaque click
+// Creation du listener sur le wookie qui incremente le nombre de clic manuel et genere des credits par clic
 
 document.querySelector('footer>p').innerText = `${OrganicClickTotal} clicks`;
 
@@ -79,17 +77,26 @@ document.querySelector('#data-1').innerHTML = credPerSecondPower;
 
 document.querySelector('#data-2').innerHTML = credPerOrganicClickPower;
 
+//similaire a la fonction par seconde mais plus rapide pour instant MAJ clic manuel + fusion des sous-totaux de clic auto et de clic manuel et incription au dom
+function manuelClicRefresh() {
+  for (let i = 0; i < 1; i++) {
+    document.querySelector('#data-3').innerHTML =
+      credPerOrganicClickTotal + credPerSecondTotal;
+  }
+}
+setInterval(manuelClicRefresh, 1);
+
 // Image Death Star dans paramButton
 paramContainer.innerHTML =
   '<img src="./FinalImages/deathStar.png" alt="deathStar kawaii" width="50%" class="deathstar-settings">';
 
-//Recuperation / Declaration ici du bouton des  setings (death star)  cree juste au dessus
+//Recuperation / Declaration ici du bouton des setings (death star)
 let settingsButton = document.querySelector('.deathstar-settings');
 
 // Application du style au compteur manuel
 manualCounter.classList.add('counter-style');
 
-//creation du bouton settings
+//cAu click sur le bouton settings > affichage du panneau des paranetres
 settingsButton.addEventListener('click', function () {
   settingsPanel.style.display = 'flex';
 });
