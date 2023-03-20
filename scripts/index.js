@@ -15,6 +15,12 @@ let credPerSecondTotal = 0;
 let credPerOrganicClickPower = 1;
 let credPerOrganicClickTotal = 0;
 let OrganicClickTotal = 0;
+const ewokHelper = document.querySelector('.ewok');
+const c3poHelper = document.querySelector('.c3po');
+const r2d2Helper = document.querySelector('.r2d2');
+const yodaHelper = document.querySelector('.yoda');
+const xwingHelper = document.querySelector('.xwing');
+const falconHelper = document.querySelector('.falcon');
 
 //Positionnement des div counter-container et param-container dans le header
 header.appendChild(counterList);
@@ -53,39 +59,6 @@ for (let i = 0; i < allCounter.length; i++) {
   }
 }
 
-//creation de la fonction du counter clic/second
-
-// function increase() {
-//   for (let i = 0; i < 1; i++) {
-//     credPerSecondTotal = credPerSecondTotal + credPerSecondPower;
-//   }
-// }
-// setInterval(increase, 1000);
-
-// Creation du listener sur le wookie qui incremente le nombre de clic manuel et genere des credits par clic
-
-document.querySelector('footer>p').innerText = `${OrganicClickTotal} clicks`;
-
-clickWookie.addEventListener('click', function () {
-  OrganicClickTotal++;
-  credPerOrganicClickTotal =
-    credPerOrganicClickTotal + credPerOrganicClickPower;
-  document.querySelector('footer>p').innerText = `${OrganicClickTotal} clicks`;
-});
-
-document.querySelector('#data-1').innerHTML = credPerSecondPower;
-
-document.querySelector('#data-2').innerHTML = credPerOrganicClickPower;
-
-//similaire a la fonction par seconde mais plus rapide pour instant MAJ clic manuel + fusion des sous-totaux de clic auto et de clic manuel et incription au dom
-function manuelClicRefresh() {
-  for (let i = 0; i < 1; i++) {
-    document.querySelector('#data-3').innerHTML =
-      credPerOrganicClickTotal + credPerSecondTotal;
-  }
-}
-setInterval(manuelClicRefresh, 1);
-
 // Image Death Star dans paramButton
 paramContainer.innerHTML =
   '<img src="./FinalImages/deathStar.png" alt="deathStar kawaii" width="50%" class="deathstar-settings">';
@@ -109,15 +82,58 @@ returnButton.addEventListener('click', function (e) {
   settingsPanel.style.display = 'none';
 });
 
-//Débloquage du helper ewok avec 5credits/sec en plus pour un cout de 50 credits
+//creation de la fonction du counter clic/second
 
-let ewokHelper = document.querySelector('.ewok');
-let bank = document.querySelector('#data-3')
-
-function unlockEwokHelp(){
-  if (bank >= 50){
-    ewokHelper.style.filter = none;
-    bank -= 50;
-    credPerSecondPower += 5;
-  };
+function increase() {
+  for (let i = 0; i < 1; i++) {
+    credPerSecondTotal += credPerSecondPower;
+  }
 }
+setInterval(increase, 1000);
+
+// Creation du listener sur le wookie qui incremente le nombre de clic manuel et genere des credits par clic
+
+document.querySelector('footer>p').innerText = `${OrganicClickTotal} clicks`;
+
+clickWookie.addEventListener('click', function () {
+  OrganicClickTotal++;
+  credPerOrganicClickTotal += credPerOrganicClickPower;
+  document.querySelector('footer>p').innerText = `${OrganicClickTotal} clicks`;
+});
+
+// Donnees des puissances de credit par second et de credit par clic manuel
+document.querySelector('#data-1').innerHTML = credPerSecondPower;
+document.querySelector('#data-2').innerHTML = credPerOrganicClickPower;
+
+//fonction de MAJ des puissances
+function improve(upgradePerSecond, updradeManuelPower) {
+  credPerSecondPower += parseFloat(upgradePerSecond);
+  credPerOrganicClickPower += parseFloat(updradeManuelPower);
+  document.querySelector('#data-1').innerHTML = credPerSecondPower;
+  document.querySelector('#data-2').innerHTML = credPerOrganicClickPower;
+}
+
+//similaire a la fonction par seconde mais plus rapide pour instant MAJ clic manuel + fusion des sous-totaux de clic auto et de clic manuel et incription au dom>
+
+function globalRefresh() {
+  for (let i = 0; i < 1; i++) {
+    document.querySelector('#data-3').innerHTML = parseFloat(
+      credPerOrganicClickTotal + credPerSecondTotal
+    );
+  }
+
+  //Débloquage du helper ewok avec 5credits/sec en plus pour un cout de 50 credits
+  if (document.querySelector('#data-3').innerHTML >= 10) {
+    ewokHelper.style.filter = 'none';
+  }
+
+  if (document.querySelector('#data-3').innerHTML >= 100) {
+    c3poHelper.style.filter = 'none';
+  }
+  // A CONTINUER
+}
+setInterval(globalRefresh, 1);
+
+ewokHelper.addEventListener('click', function () {
+  improve(0.5, 1);
+});
