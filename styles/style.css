@@ -184,6 +184,7 @@ header {
 
 .helper {
   text-align: center;
+  filter: saturate(0) opacity(60%);
 }
 
 .clicker_container {
@@ -230,17 +231,6 @@ header {
 .wookie_clicker:active {
   animation: zoomOff;
   animation-duration: 0.1s;
-}
-
-.R2D2,
-.falcon,
-.xwing,
-.yoda {
-  filter: saturate(0) opacity(60%);
-}
-
-.helper:hover{
-  filter: none;
 }
 
 /* Footer style */
