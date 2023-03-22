@@ -12,10 +12,11 @@ let clickWookie = document.querySelector('.wookie_clicker');
 let ewokHelper = document.querySelector(".ewok");
 let credPerSecondPower = 0;
 let credPerSecondTotal = 0;
-let credPerOrganicClickPower = 2;
+let credPerOrganicClickPower = 1;
 let credPerOrganicClickTotal = 0;
 let OrganicClickTotal = 0;
 let bank = 0;
+let ewokPrice = 5;
 
 
 
@@ -86,6 +87,37 @@ setInterval(increase, 1000);
 
 // -------------------------------------------------------------// Creation du listener sur le wookie (et les helpers) qui incremente le nombre de clic manuel et genere des credits par clic
 
+// function test(){
+//   let pointAdded = document.createElement('div');
+//   pointAdded.innerText = `+${credPerOrganicClickPower}`;
+//   pointAdded.classList.add('pointAdded', 'unselectable');
+//   clickWookie.appendChild(pointAdded);
+
+
+//   OrganicClickTotal++;
+//   credPerOrganicClickTotal += credPerOrganicClickPower;
+//   document.querySelector('footer>p').innerText = `${OrganicClickTotal} clicks`;
+
+
+//   bank = credPerOrganicClickTotal + credPerSecondTotal;
+//   document.querySelector('#data-3').innerHTML = bank;
+
+//   if (bank >= 5){
+//     ewokHelper.style.filter = 'none';
+//     ewokHelper.addEventListener('click', function(){
+//       bank -= 5;
+//       document.querySelector('#data-3').innerText = bank;
+//     });
+//     };
+
+// }
+
+
+
+
+
+
+
 document.querySelector('footer>p').innerText = `${OrganicClickTotal} clicks`;
 
 clickWookie.addEventListener('click', function () {
@@ -99,25 +131,26 @@ clickWookie.addEventListener('click', function () {
   credPerOrganicClickTotal += credPerOrganicClickPower;
   document.querySelector('footer>p').innerText = `${OrganicClickTotal} clicks`;
 
-    //similaire a la fonction par seconde mais plus rapide pour instant MAJ clic manuel + fusion des sous-totaux de clic auto et de clic manuel et incription au dom
 
-    
-    // for (let i = 0; i < 1; i++) {
-      bank = credPerOrganicClickTotal + credPerSecondTotal;
-      document.querySelector('#data-3').innerHTML = bank;
+  bank = credPerOrganicClickTotal + credPerSecondTotal;
+  document.querySelector('#data-3').innerHTML = bank;
+  ewokOK();
+  console.log(bank);
+  }
+);
 
-    //};
+function ewokOK(){
+    if(bank >= ewokPrice){
+    ewokHelper.style.filter = 'none'};
+  }
 
-
-
-  //Débloquage du helper ewok avec 5credits/sec en plus pour un cout de 50 credits
-
-    if (bank >= 5){
-      ewokHelper.style.filter = 'none';
-      ewokHelper.addEventListener('click', function(){bank = bank - 5});
-      };
-
-
+  ewokHelper.addEventListener('click', function(){
+    if (bank >= ewokPrice){
+    bank -= ewokPrice;
+    credPerOrganicClickTotal -= ewokPrice;
+    document.querySelector('#data-3').innerText = bank;}
+  }
+  );
 
 
 
@@ -125,14 +158,14 @@ clickWookie.addEventListener('click', function () {
 //similaire a la fonction par seconde mais plus rapide pour
 // instant MAJ clic manuel + fusion des sous-totaux de clic auto et de clic manuel et incription au dom
 
-function manuelClicRefresh() {
-  for (let i = 0; i < 1; i++) {
-    document.querySelector('#data-3').innerHTML =
-      credPerOrganicClickTotal + credPerSecondTotal;
-  }
-}
-setInterval(manuelClicRefresh, 1);
-});
+// function manuelClicRefresh() {
+//   for (let i = 0; i < 1; i++) {
+//     document.querySelector('#data-3').innerHTML =
+//       credPerOrganicClickTotal + credPerSecondTotal;
+//   }
+// }
+// setInterval(manuelClicRefresh, 1);
+
 
 
 // --------------------------------------------------------------------------------------------------------------------------------------------parametre
