@@ -88,6 +88,12 @@ setInterval(increase, 1000);
 document.querySelector('footer>p').innerText = `${OrganicClickTotal} clicks`;
 
 clickWookie.addEventListener('click', function () {
+  let pointAdded = document.createElement('div');
+  pointAdded.innerText = `+${credPerOrganicClickPower}`;
+  pointAdded.classList.add('pointAdded', 'unselectable');
+  clickWookie.appendChild(pointAdded);
+
+
   OrganicClickTotal++;
   credPerOrganicClickTotal += credPerOrganicClickPower;
   document.querySelector('footer>p').innerText = `${OrganicClickTotal} clicks`;
@@ -106,7 +112,7 @@ console.log(bank.innerText);
 
     if (bank.innerText >= 5){
       ewokHelper.style.filter = 'none';
-      ewokHelper.addEventListener('click', function(e){bank.innerText = bank.innerText - 5;});
+      ewokHelper.addEventListener('click', function(e){bank -= 5});
       };
 
 
@@ -156,15 +162,12 @@ returnButton.addEventListener('click', function (e) {
 
 // -------------------------------------------------------------------------------------------------------------------------creation du pop up click power
 
-clickWookie.addEventListener('click', function (e) {
-  function reflect(e) {
-    let pointAdded = document.createElement('div');
-    pointAdded.innerText = `+${credPerOrganicClickPower}`;
-    pointAdded.classList.add('pointAdded', 'unselectable');
-    clickWookie.appendChild(pointAdded);
-  }
-  reflect(e);
-});
+// clickWookie.addEventListener('click', function () {
+//   function reflect(e) {
+
+//   }
+//   reflect();
+// });
 
 // --------------------recuperation des positions sur le dom
 
