@@ -22,6 +22,30 @@
   }
 }
 
+@keyframes bye {
+  from {
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(-300px);
+  }
+
+}
+
+@keyframes casper {
+  from {
+    color: whitesmoke;
+  }
+
+  to {
+    color: rgba(0, 0, 0, 0)
+  }
+}
+
+
+
+
 /* Mise en page du body */
 
 * {
@@ -303,29 +327,10 @@ footer {
 .pointAdded {
   z-index: 90;
   font-size: 25px;
-  font-family: 'Segoe UI';
+  font-family: Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: bold;
   position: absolute;
   animation: bye 3s, casper 3s;
   animation-fill-mode: forwards;
 }
 
-@keyframes bye {
-  from {
-    transform: translateY(0);
-  }
-
-  to {
-    transform: translateY(-300px);
-  }
-
-}
-
-@keyframes casper {
-  from {
-    color: black
-  }
-
-  to {
-    color: rgba(0, 0, 0, 0)
-  }
-}
