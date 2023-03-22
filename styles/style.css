@@ -15,12 +15,36 @@
 }
 
 @keyframes zoomOff {
-  from {
-  }
+  from {}
+
   to {
     transform: scale(0.8);
   }
 }
+
+@keyframes bye {
+  from {
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(-300px);
+  }
+
+}
+
+@keyframes casper {
+  from {
+    color: whitesmoke;
+  }
+
+  to {
+    color: rgba(0, 0, 0, 0)
+  }
+}
+
+
+
 
 /* Mise en page du body */
 
@@ -92,17 +116,22 @@ header {
 /* Settings style */
 
 .settings-panel {
-  display: none; /* Hidden by default */
+  display: none;
+  /* Hidden by default */
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
   background-image: url('../FinalImages/background-mobile.jpg');
   background-size: cover;
-  width: 100%; /* Full width (cover the whole page) */
-  height: 100%; /* Full height (cover the whole page) */
-  position: fixed; /* Sit on top of the page content */
+  width: 100%;
+  /* Full width (cover the whole page) */
+  height: 100%;
+  /* Full height (cover the whole page) */
+  position: fixed;
+  /* Sit on top of the page content */
   color: var(--main_color);
-  z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+  z-index: 2;
+  /* Specify a stack order in case you're using a different order for other elements */
 }
 
 .settings-container {
@@ -191,6 +220,7 @@ header {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   grid-template-rows: repeat(15, 1fr);
+  position: relative;
 }
 
 .wookie_clicker {
@@ -293,3 +323,14 @@ footer {
     height: 10%;
   }
 }
+
+.pointAdded {
+  z-index: 90;
+  font-size: 25px;
+  font-family: Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: bold;
+  position: absolute;
+  animation: bye 3s, casper 3s;
+  animation-fill-mode: forwards;
+}
+
