@@ -54,12 +54,12 @@ for (let i = 0; i < allCounter.length; i++) {
 
 //creation de la fonction du counter clic/second
 
-function increase() {
-  for (let i = 0; i < 1; i++) {
-    credPerSecondTotal = credPerSecondTotal + credPerSecondPower;
-  }
-}
-setInterval(increase, 1000);
+// function increase() {
+//   for (let i = 0; i < 1; i++) {
+//     credPerSecondTotal = credPerSecondTotal + credPerSecondPower;
+//   }
+// }
+// setInterval(increase, 1000);
 
 // Creation du listener sur le wookie qui incremente le nombre de clic manuel et genere des credits par clic
 
@@ -107,3 +107,16 @@ returnButton.addEventListener('click', function (e) {
   e.preventDefault;
   settingsPanel.style.display = 'none';
 });
+
+//Débloquage du helper ewok avec 5credits/sec en plus pour un cout de 50 credits
+
+let ewokHelper = document.querySelector('.ewok');
+let bank = document.querySelector('#data-3')
+
+function unlockEwokHelp(){
+  if (bank >= 50){
+    ewokHelper.style.filter = none;
+    bank -= 50;
+    credPerSecondPower += 5;
+  };
+}
