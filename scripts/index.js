@@ -1,11 +1,10 @@
 //Declaration des variables pour le DOM du header
-
 let header = document.querySelector('header');
 let counterList = document.createElement('div');
 let paramContainer = document.createElement('div');
-let moulaPerSecond = document.createElement('div'); //credit genere automatiquement
-let moulaPerManuelclick = document.createElement('div'); //credit genere au clic
-let laMoulaTotal = document.createElement('div'); //credit total
+let perSecondContainer = document.createElement('div'); //credit genere automatiquement
+let organicClickContainer = document.createElement('div'); //credit genere au clic
+let bankContainer = document.createElement('div'); //credit total
 let manualCounter = document.querySelector('footer');
 let settingsPanel = document.querySelector('.settings-panel');
 let returnButton = document.querySelector('.return-button');
@@ -13,7 +12,7 @@ let clickWookie = document.querySelector('.wookie_clicker');
 let ewokHelper = document.querySelector(".ewok");
 let credPerSecondPower = 0;
 let credPerSecondTotal = 0;
-let credPerOrganicClickPower = 1;
+let credPerOrganicClickPower = 2;
 let credPerOrganicClickTotal = 0;
 let OrganicClickTotal = 0;
 let bank = 0;
@@ -22,7 +21,9 @@ console.log(credPerOrganicClickTotal);
 
 
 
+// ---------------------------------------------------------------------------------------------------------------------------style des counters
 //Positionnement des div counter-container et param-container dans le header
+
 header.appendChild(counterList);
 header.appendChild(paramContainer);
 
@@ -33,11 +34,14 @@ counterList.classList.add('counter-container');
 paramContainer.classList.add('param-container');
 
 //Positionnement des 3 counters dans la div counter-poisition
-counterList.appendChild(moulaPerSecond);
-counterList.appendChild(moulaPerManuelclick);
-counterList.appendChild(laMoulaTotal);
+counterList.appendChild(perSecondContainer);
+counterList.appendChild(organicClickContainer);
+counterList.appendChild(bankContainer);
 
-//boucle d'attribution de la classe  counter-size, counter style a tous les counters
+// Application du style au compteur manuel
+manualCounter.classList.add('counter-style');
+
+//------------------------------------------------------------------------boucle d'attribution de la classe  counter-size, counter style a tous les counters
 
 let allCounter = document.querySelectorAll('.counter-container > div');
 for (let i = 0; i < allCounter.length; i++) {
@@ -60,6 +64,9 @@ for (let i = 0; i < allCounter.length; i++) {
 }
 
 
+// ------------------------------------------------------------------------------------------------//creation de la fonction du counter clic/second
+
+
 document.querySelector('#data-1').innerHTML = credPerSecondPower;
 
 document.querySelector('#data-2').innerHTML = credPerOrganicClickPower;
@@ -68,6 +75,7 @@ document.querySelector('#data-3').innerHTML = bank;
 
 //creation de la fonction du counter clic/second
 
+
 function increase() {
   for (let i = 0; i < 1; i++) {
     credPerSecondTotal = credPerSecondTotal + credPerSecondPower;
@@ -75,7 +83,7 @@ function increase() {
 }
 setInterval(increase, 1000);
 
-// Creation du listener sur le wookie qui incremente le nombre de clic manuel et genere des credits par clic
+// -------------------------------------------------------------// Creation du listener sur le wookie (et les helpers) qui incremente le nombre de clic manuel et genere des credits par clic
 
 document.querySelector('footer>p').innerText = `${OrganicClickTotal} clicks`;
 
@@ -109,18 +117,27 @@ console.log(credPerOrganicClickTotal);
 
 
 
+// ------------------------------------------------------------------------------------------------------------------------------------------BANK
+//similaire a la fonction par seconde mais plus rapide pour
+// instant MAJ clic manuel + fusion des sous-totaux de clic auto et de clic manuel et incription au dom
+
+function manuelClicRefresh() {
+  for (let i = 0; i < 1; i++) {
+    document.querySelector('#data-3').innerHTML =
+      credPerOrganicClickTotal + credPerSecondTotal;
+  }
+}
+setInterval(manuelClicRefresh, 1);
 });
 
 
+// --------------------------------------------------------------------------------------------------------------------------------------------parametre
 // Image Death Star dans paramButton
 paramContainer.innerHTML =
   '<img src="./FinalImages/deathStar.png" alt="deathStar kawaii" width="50%" class="deathstar-settings">';
 
 //Recuperation / Declaration ici du bouton des setings (death star)
 let settingsButton = document.querySelector('.deathstar-settings');
-
-// Application du style au compteur manuel
-manualCounter.classList.add('counter-style');
 
 //cAu click sur le bouton settings > affichage du panneau des paranetres
 settingsButton.addEventListener('click', function () {
@@ -135,18 +152,34 @@ returnButton.addEventListener('click', function (e) {
   settingsPanel.style.display = 'none';
 });
 
-//Débloquage du helper ewok avec 5credits/sec en plus pour un cout de 50 credits
-
-// let ewokHelper = document.querySelector(".ewok");
-// let bank = document.getElementById("data-3");
-
-// console.log(bank.innerHTML);
-
-//   if (credPerOrganicClickTotal >= 5){
-//     ewokHelper.style.filter = 'none';
-//   };
 
 
+// -------------------------------------------------------------------------------------------------------------------------creation du pop up click power
 
-// credPerOrganicClickTotal -= 50;
-// credPerSecondPower += 5;
+clickWookie.addEventListener('click', function (e) {
+  function reflect(e) {
+    let pointAdded = document.createElement('div');
+    pointAdded.innerText = `+${credPerOrganicClickPower}`;
+    pointAdded.classList.add('pointAdded', 'unselectable');
+    clickWookie.appendChild(pointAdded);
+  }
+  reflect(e);
+});
+
+// --------------------recuperation des positions sur le dom
+
+// let popPosition = clickWookie.getBoundingClientRect();
+// let position = {
+//   x: e.pageX - popPosition.left,
+//   y: e.pageY - popPosition.top,
+// };
+// --------------------------------position du pop-up
+
+// pointAdded.style.left = position.x + 'px';
+// pointAdded.style.top = position.y + 'px';
+
+// let movementInterval = window.setInterval(function () {
+//   position.y--;
+//   popPosition.style.top = position.y + 'px';
+// }, 10);
+
