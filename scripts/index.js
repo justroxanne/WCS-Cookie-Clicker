@@ -10,11 +10,17 @@ let manualCounter = document.querySelector('footer');
 let settingsPanel = document.querySelector('.settings-panel');
 let returnButton = document.querySelector('.return-button');
 let clickWookie = document.querySelector('.wookie_clicker');
-let credPerSecondPower = 0.5;
+let ewokHelper = document.querySelector(".ewok");
+let credPerSecondPower = 0;
 let credPerSecondTotal = 0;
 let credPerOrganicClickPower = 1;
 let credPerOrganicClickTotal = 0;
 let OrganicClickTotal = 0;
+let bank = 0;
+
+console.log(credPerOrganicClickTotal);
+
+
 
 //Positionnement des div counter-container et param-container dans le header
 header.appendChild(counterList);
@@ -53,14 +59,21 @@ for (let i = 0; i < allCounter.length; i++) {
   }
 }
 
+
+document.querySelector('#data-1').innerHTML = credPerSecondPower;
+
+document.querySelector('#data-2').innerHTML = credPerOrganicClickPower;
+
+document.querySelector('#data-3').innerHTML = bank;
+
 //creation de la fonction du counter clic/second
 
-// function increase() {
-//   for (let i = 0; i < 1; i++) {
-//     credPerSecondTotal = credPerSecondTotal + credPerSecondPower;
-//   }
-// }
-// setInterval(increase, 1000);
+function increase() {
+  for (let i = 0; i < 1; i++) {
+    credPerSecondTotal = credPerSecondTotal + credPerSecondPower;
+  }
+}
+setInterval(increase, 1000);
 
 // Creation du listener sur le wookie qui incremente le nombre de clic manuel et genere des credits par clic
 
@@ -68,23 +81,36 @@ document.querySelector('footer>p').innerText = `${OrganicClickTotal} clicks`;
 
 clickWookie.addEventListener('click', function () {
   OrganicClickTotal++;
-  credPerOrganicClickTotal =
-    credPerOrganicClickTotal + credPerOrganicClickPower;
+  credPerOrganicClickTotal += credPerOrganicClickPower;
   document.querySelector('footer>p').innerText = `${OrganicClickTotal} clicks`;
+
+    //similaire a la fonction par seconde mais plus rapide pour instant MAJ clic manuel + fusion des sous-totaux de clic auto et de clic manuel et incription au dom
+    let bank = document.querySelector('#data-3');
+    // for (let i = 0; i < 1; i++) {
+      bank.innerHTML =
+        credPerOrganicClickTotal + credPerSecondTotal;
+    //};
+  
+console.log(bank.innerText);
+
+
+  //Débloquage du helper ewok avec 5credits/sec en plus pour un cout de 50 credits
+
+    if (bank.innerText >= 5){
+      ewokHelper.style.filter = 'none';
+      ewokHelper.addEventListener('click', function(e){bank.innerText = bank.innerText - 5;});
+      };
+
+
+
+
+console.log(OrganicClickTotal);
+console.log(credPerOrganicClickTotal);
+
+
+
 });
 
-document.querySelector('#data-1').innerHTML = credPerSecondPower;
-
-document.querySelector('#data-2').innerHTML = credPerOrganicClickPower;
-
-//similaire a la fonction par seconde mais plus rapide pour instant MAJ clic manuel + fusion des sous-totaux de clic auto et de clic manuel et incription au dom
-function manuelClicRefresh() {
-  for (let i = 0; i < 1; i++) {
-    document.querySelector('#data-3').innerHTML =
-      credPerOrganicClickTotal + credPerSecondTotal;
-  }
-}
-setInterval(manuelClicRefresh, 1);
 
 // Image Death Star dans paramButton
 paramContainer.innerHTML =
@@ -111,13 +137,16 @@ returnButton.addEventListener('click', function (e) {
 
 //Débloquage du helper ewok avec 5credits/sec en plus pour un cout de 50 credits
 
-let ewokHelper = document.querySelector('.ewok');
-let bank = document.querySelector('#data-3')
+// let ewokHelper = document.querySelector(".ewok");
+// let bank = document.getElementById("data-3");
 
-function unlockEwokHelp(){
-  if (bank >= 50){
-    ewokHelper.style.filter = none;
-    bank -= 50;
-    credPerSecondPower += 5;
-  };
-}
+// console.log(bank.innerHTML);
+
+//   if (credPerOrganicClickTotal >= 5){
+//     ewokHelper.style.filter = 'none';
+//   };
+
+
+
+// credPerOrganicClickTotal -= 50;
+// credPerSecondPower += 5;
