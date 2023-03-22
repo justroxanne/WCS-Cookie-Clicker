@@ -9,7 +9,7 @@ let manualCounter = document.querySelector('footer');
 let settingsPanel = document.querySelector('.settings-panel');
 let returnButton = document.querySelector('.return-button');
 let clickWookie = document.querySelector('.wookie_clicker');
-let ewokHelper = document.querySelector(".ewok");
+let ewokHelper = document.querySelector('.ewok');
 let credPerSecondPower = 0;
 let credPerSecondTotal = 0;
 let credPerOrganicClickPower = 2;
@@ -18,8 +18,6 @@ let OrganicClickTotal = 0;
 let bank = 0;
 
 console.log(credPerOrganicClickTotal);
-
-
 
 // ---------------------------------------------------------------------------------------------------------------------------style des counters
 //Positionnement des div counter-container et param-container dans le header
@@ -63,9 +61,7 @@ for (let i = 0; i < allCounter.length; i++) {
   }
 }
 
-
 // ------------------------------------------------------------------------------------------------//creation de la fonction du counter clic/second
-
 
 document.querySelector('#data-1').innerHTML = credPerSecondPower;
 
@@ -74,7 +70,6 @@ document.querySelector('#data-2').innerHTML = credPerOrganicClickPower;
 document.querySelector('#data-3').innerHTML = bank;
 
 //creation de la fonction du counter clic/second
-
 
 function increase() {
   for (let i = 0; i < 1; i++) {
@@ -93,49 +88,42 @@ clickWookie.addEventListener('click', function () {
   pointAdded.classList.add('pointAdded', 'unselectable');
   clickWookie.appendChild(pointAdded);
 
-
   OrganicClickTotal++;
   credPerOrganicClickTotal += credPerOrganicClickPower;
   document.querySelector('footer>p').innerText = `${OrganicClickTotal} clicks`;
 
-    //similaire a la fonction par seconde mais plus rapide pour instant MAJ clic manuel + fusion des sous-totaux de clic auto et de clic manuel et incription au dom
-    let bank = document.querySelector('#data-3');
-    // for (let i = 0; i < 1; i++) {
-      bank.innerHTML =
-        credPerOrganicClickTotal + credPerSecondTotal;
-    //};
-  
-console.log(bank.innerText);
+  //similaire a la fonction par seconde mais plus rapide pour instant MAJ clic manuel + fusion des sous-totaux de clic auto et de clic manuel et incription au dom
+  let bank = document.querySelector('#data-3');
+  // for (let i = 0; i < 1; i++) {
+  bank.innerHTML = credPerOrganicClickTotal + credPerSecondTotal;
+  //};
 
+  console.log(bank.innerText);
 
   //Débloquage du helper ewok avec 5credits/sec en plus pour un cout de 50 credits
 
-    if (bank.innerText >= 5){
-      ewokHelper.style.filter = 'none';
-      ewokHelper.addEventListener('click', function(e){bank -= 5});
-      };
-
-
-
-
-console.log(OrganicClickTotal);
-console.log(credPerOrganicClickTotal);
-
-
-
-// ------------------------------------------------------------------------------------------------------------------------------------------BANK
-//similaire a la fonction par seconde mais plus rapide pour
-// instant MAJ clic manuel + fusion des sous-totaux de clic auto et de clic manuel et incription au dom
-
-function manuelClicRefresh() {
-  for (let i = 0; i < 1; i++) {
-    document.querySelector('#data-3').innerHTML =
-      credPerOrganicClickTotal + credPerSecondTotal;
+  if (bank.innerText >= 5) {
+    ewokHelper.style.filter = 'none';
+    ewokHelper.addEventListener('click', function (e) {
+      bank -= 5;
+    });
   }
-}
-setInterval(manuelClicRefresh, 1);
-});
 
+  console.log(OrganicClickTotal);
+  console.log(credPerOrganicClickTotal);
+
+  // ------------------------------------------------------------------------------------------------------------------------------------------BANK
+  //similaire a la fonction par seconde mais plus rapide pour
+  // instant MAJ clic manuel + fusion des sous-totaux de clic auto et de clic manuel et incription au dom
+
+  function manuelClicRefresh() {
+    for (let i = 0; i < 1; i++) {
+      document.querySelector('#data-3').innerHTML =
+        credPerOrganicClickTotal + credPerSecondTotal;
+    }
+  }
+  setInterval(manuelClicRefresh, 1);
+});
 
 // --------------------------------------------------------------------------------------------------------------------------------------------parametre
 // Image Death Star dans paramButton
@@ -157,8 +145,6 @@ returnButton.addEventListener('click', function (e) {
   e.preventDefault;
   settingsPanel.style.display = 'none';
 });
-
-
 
 // -------------------------------------------------------------------------------------------------------------------------creation du pop up click power
 
@@ -185,4 +171,3 @@ returnButton.addEventListener('click', function (e) {
 //   position.y--;
 //   popPosition.style.top = position.y + 'px';
 // }, 10);
-
