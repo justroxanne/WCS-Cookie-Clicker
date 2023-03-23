@@ -84,29 +84,48 @@ function increase() {
 }
 setInterval(increase, 1000);
 
+//Fonction position +1, +2, ...
+const plusPointPosition = () => {
+  let pointAdded = document.createElement('div');
+  pointAdded.innerText = `+${credPerOrganicClickPower}`;
+  pointAdded.classList.add('pointAdded'); //class qui donne le style et l'animation
+  clickWookie.appendChild(pointAdded);
+
+  //Purge des div crees
+  setTimeout(function () {
+    pointAdded.remove();
+  }, 3000);
+}
+
+//Fonction d'increment des totaux de click manuel
+const incrementManuelClick = () => {
+  OrganicClickTotal++;
+  credPerOrganicClickTotal += credPerOrganicClickPower;
+  document.querySelector('footer>p').innerText = `${OrganicClickTotal} clicks`;
+}
+
+//Fonction increment total et insertion au HTML
+const incrementTotalToHtml = () => {
+  bank = credPerOrganicClickTotal + credPerSecondTotal;
+  document.querySelector('#data-3').innerHTML = bank;
+}
+
 // -------------------------------------------------------------// Creation du listener sur le wookie (et les helpers) qui incremente le nombre de clic manuel et genere des credits par clic
 
 
 document.querySelector('footer>p').innerText = `${OrganicClickTotal} clicks`;
 
+
 clickWookie.addEventListener('click', function () {
-  let pointAdded = document.createElement('div');
-  pointAdded.innerText = `+${credPerOrganicClickPower}`;
-  pointAdded.classList.add('pointAdded');
-  clickWookie.appendChild(pointAdded);
-  setTimeout(function () {
-    pointAdded.remove();
-  }, 3000);
+  
+  plusPointPosition()
 
-  OrganicClickTotal++;
-  credPerOrganicClickTotal += credPerOrganicClickPower;
-  document.querySelector('footer>p').innerText = `${OrganicClickTotal} clicks`;
+  incrementManuelClick()
 
+  incrementTotalToHtml()
 
-  bank = credPerOrganicClickTotal + credPerSecondTotal;
-  document.querySelector('#data-3').innerHTML = bank;
   ewokOK();
-  console.log(bank);
+
   }
 );
 
@@ -161,12 +180,6 @@ forceOn.addEventListener('click', function () {
 
 // -------------------------------------------------------------------------------------------------------------------------creation du pop up click power
 
-// clickWookie.addEventListener('click', function () {
-//   function reflect(e) {
-
-//   }
-//   reflect();
-// });
 
 // --------------------recuperation des positions sur le dom
 
