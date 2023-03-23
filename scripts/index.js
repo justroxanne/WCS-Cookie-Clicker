@@ -17,7 +17,11 @@ let credPerOrganicClickTotal = 0;
 let OrganicClickTotal = 0;
 let bank = 0;
 
+
 console.log(credPerOrganicClickTotal);
+
+
+
 
 // ---------------------------------------------------------------------------------------------------------------------------style des counters
 //Positionnement des div counter-container et param-container dans le header
@@ -69,6 +73,9 @@ document.querySelector('#data-2').innerHTML = credPerOrganicClickPower;
 
 document.querySelector('#data-3').innerHTML = bank;
 
+// let bank = document.querySelector('#data-3');
+
+
 //creation de la fonction du counter clic/second
 
 function increase() {
@@ -95,25 +102,28 @@ clickWookie.addEventListener('click', function () {
   credPerOrganicClickTotal += credPerOrganicClickPower;
   document.querySelector('footer>p').innerText = `${OrganicClickTotal} clicks`;
 
-  //similaire a la fonction par seconde mais plus rapide pour instant MAJ clic manuel + fusion des sous-totaux de clic auto et de clic manuel et incription au dom
-  let bank = document.querySelector('#data-3');
-  // for (let i = 0; i < 1; i++) {
-  bank.innerHTML = credPerOrganicClickTotal + credPerSecondTotal;
-  //};
+
+    //similaire a la fonction par seconde mais plus rapide pour instant MAJ clic manuel + fusion des sous-totaux de clic auto et de clic manuel et incription au dom
+
+    
+    // for (let i = 0; i < 1; i++) {
+      bank = credPerOrganicClickTotal + credPerSecondTotal;
+      document.querySelector('#data-3').innerHTML = bank;
+
+    //};
+
 
   console.log(bank.innerText);
 
   //Débloquage du helper ewok avec 5credits/sec en plus pour un cout de 50 credits
 
-  if (bank.innerText >= 5) {
-    ewokHelper.style.filter = 'none';
-    ewokHelper.addEventListener('click', function (e) {
-      bank -= 5;
-    });
-  }
 
-  console.log(OrganicClickTotal);
-  console.log(credPerOrganicClickTotal);
+    if (bank >= 5){
+      ewokHelper.style.filter = 'none';
+      ewokHelper.addEventListener('click', function(){bank = bank - 5});
+      };
+
+
 
   // ------------------------------------------------------------------------------------------------------------------------------------------BANK
   //similaire a la fonction par seconde mais plus rapide pour
