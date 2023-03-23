@@ -18,12 +18,6 @@ let OrganicClickTotal = 0;
 let bank = 0;
 let ewokPrice = 5;
 
-
-console.log(credPerOrganicClickTotal);
-
-
-
-
 // ---------------------------------------------------------------------------------------------------------------------------style des counters
 //Positionnement des div counter-container et param-container dans le header
 
@@ -76,7 +70,6 @@ document.querySelector('#data-3').innerHTML = bank;
 
 
 //creation de la fonction du counter clic/second
-
 function increase() {
   for (let i = 0; i < 1; i++) {
     credPerSecondTotal = credPerSecondTotal + credPerSecondPower;
@@ -85,11 +78,14 @@ function increase() {
 setInterval(increase, 1000);
 
 //Fonction position +1, +2, ...
-const plusPointPosition = () => {
+const plusPointPosition = (posHoriz, posVert) => {
   let pointAdded = document.createElement('div');
   pointAdded.innerText = `+${credPerOrganicClickPower}`;
   pointAdded.classList.add('pointAdded'); //class qui donne le style et l'animation
   clickWookie.appendChild(pointAdded);
+  console.log(`${posHoriz}px`)
+  pointAdded.style.left = `${posHoriz}px`
+  pointAdded.style.top = `${posVert}px`
 
   //Purge des div crees
   setTimeout(function () {
@@ -110,15 +106,18 @@ const incrementTotalToHtml = () => {
   document.querySelector('#data-3').innerHTML = bank;
 }
 
+
+
 // -------------------------------------------------------------// Creation du listener sur le wookie (et les helpers) qui incremente le nombre de clic manuel et genere des credits par clic
-
-
 document.querySelector('footer>p').innerText = `${OrganicClickTotal} clicks`;
 
 
-clickWookie.addEventListener('click', function () {
+clickWookie.addEventListener('click', function (event) {
+
+  let posX = event.offsetX;
+  let posY = event.offsetY;
   
-  plusPointPosition()
+  plusPointPosition(posX, posY)
 
   incrementManuelClick()
 
