@@ -296,6 +296,7 @@ footer {
   position: absolute;
   animation: bye 3s, casper 3s;
   animation-fill-mode: forwards;
+  user-select: none;
 }
 
 /* Adaptation au format Desktop avec l'utilisation des media queries */
