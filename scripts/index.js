@@ -10,13 +10,28 @@ let settingsPanel = document.querySelector('.settings-panel');
 let returnButton = document.querySelector('.return-button');
 let clickWookie = document.querySelector('.wookie_clicker');
 let ewokHelper = document.querySelector('.ewok');
+let c3poHelper = document.querySelector('.c3po');
+let r2d2Helper = document.querySelector('.r2d2');
+let yodaHelper = document.querySelector('.yoda');
+let xwingHelper = document.querySelector('.xwing');
+let falconHelper = document.querySelector('.falcon');
+let helpers = document.querySelectorAll('.helper');
 let credPerSecondPower = 0;
 let credPerSecondTotal = 0;
 let credPerOrganicClickPower = 1;
 let credPerOrganicClickTotal = 0;
 let OrganicClickTotal = 0;
 let bank = 0;
-let ewokPrice = 5;
+// let ewokPrice = 50;
+// let c3poPrice = 500;
+// let r2d2Price = 1000;
+// let yodaPrice = 5000;
+// let xwingPrice = 10000;
+// let falconPrice = 1000000;
+let prices = [5, 10, 15, 20, 25, 30];
+
+
+
 
 // ---------------------------------------------------------------------------------------------------------------------------style des counters
 //Positionnement des div counter-container et param-container dans le header
@@ -108,6 +123,19 @@ const incrementTotalToHtml = () => {
 
 
 
+/*-----------------------------------------Fonction de débloquage d'un helper---------------*/
+
+function unlockHelper(helperPrice, helper){
+  if (bank >= helperPrice){
+    helper.style.filter= 'none';
+  }
+}
+
+
+
+
+
+
 // -------------------------------------------------------------// Creation du listener sur le wookie (et les helpers) qui incremente le nombre de clic manuel et genere des credits par clic
 document.querySelector('footer>p').innerText = `${OrganicClickTotal} clicks`;
 
@@ -119,28 +147,40 @@ clickWookie.addEventListener('click', function (event) {
   
   plusPointPosition(posX, posY)
 
-  incrementManuelClick()
+  incrementManuelClick();
 
-  incrementTotalToHtml()
+  incrementTotalToHtml();
 
-  ewokOK();
-
+  for(let i = 0; i < helpers.length; i++){
+    unlockHelper(prices[i], helpers[i]);
+    }
   }
 );
 
 
-function ewokOK(){
-    if(bank >= ewokPrice){
-    ewokHelper.style.filter = 'none'};
-  }
 
-  ewokHelper.addEventListener('click', function(){
-    if (bank >= ewokPrice){
-    bank -= ewokPrice;
-    credPerOrganicClickTotal -= ewokPrice;
-    document.querySelector('#data-3').innerText = bank;}
-  }
-  );
+
+
+
+
+
+
+  // ewokHelper.addEventListener('click', function(){
+  //   if (bank >= ewokPrice){
+  //   bank -= ewokPrice;
+  //   credPerOrganicClickTotal -= ewokPrice;
+  //   document.querySelector('#data-3').innerText = bank;
+  //   credPerOrganicClickPower ++;
+  //   document.querySelector('#data-2').innerText = credPerOrganicClickPower;}
+  // }
+  // );
+
+  // function c3poOk(){
+  //   if(bank >= c3poPrice){
+      
+  //   }
+  // }
+  
 
  
 // --------------------------------------------------------------------------------------------------------------------------------------------parametre
@@ -179,20 +219,9 @@ forceOn.addEventListener('click', function () {
 
 // -------------------------------------------------------------------------------------------------------------------------creation du pop up click power
 
-
-// --------------------recuperation des positions sur le dom
-
-// let popPosition = clickWookie.getBoundingClientRect();
-// let position = {
-//   x: e.pageX - popPosition.left,
-//   y: e.pageY - popPosition.top,
-// };
-// --------------------------------position du pop-up
-
-// pointAdded.style.left = position.x + 'px';
-// pointAdded.style.top = position.y + 'px';
-
-// let movementInterval = window.setInterval(function () {
-//   position.y--;
-//   popPosition.style.top = position.y + 'px';
-// }, 10);
+document.getElementById('ewok-help').innerText = `Power : 1 credit/clic, Price : ${prices[0]} credits`;
+document.getElementById('C3PO-help').innerText = `Power : 1 credit/second, Price : ${prices[1]} credits`;
+document.getElementById('R2D2-help').innerText = `Power : 10 credit/clic, Price : ${prices[2]} credits`;
+document.getElementById('yoda-help').innerText = `Power : 10 credit/second , Price : ${prices[3]} credits`;
+document.getElementById('xwing-help').innerText = `Power : 100 credit/clic, Price : ${prices[4]} credits`;
+document.getElementById('falcon-help').innerText = `Power : You win !! , Price : ${prices[5]} credits`;
