@@ -74,8 +74,6 @@ document.querySelector('#data-2').innerHTML = credPerOrganicClickPower;
 
 document.querySelector('#data-3').innerHTML = bank;
 
-// let bank = document.querySelector('#data-3');
-
 
 //creation de la fonction du counter clic/second
 
@@ -86,59 +84,48 @@ function increase() {
 }
 setInterval(increase, 1000);
 
+//Fonction position +1, +2, ...
+const plusPointPosition = () => {
+  let pointAdded = document.createElement('div');
+  pointAdded.innerText = `+${credPerOrganicClickPower}`;
+  pointAdded.classList.add('pointAdded'); //class qui donne le style et l'animation
+  clickWookie.appendChild(pointAdded);
+
+  //Purge des div crees
+  setTimeout(function () {
+    pointAdded.remove();
+  }, 3000);
+}
+
+//Fonction d'increment des totaux de click manuel
+const incrementManuelClick = () => {
+  OrganicClickTotal++;
+  credPerOrganicClickTotal += credPerOrganicClickPower;
+  document.querySelector('footer>p').innerText = `${OrganicClickTotal} clicks`;
+}
+
+//Fonction increment total et insertion au HTML
+const incrementTotalToHtml = () => {
+  bank = credPerOrganicClickTotal + credPerSecondTotal;
+  document.querySelector('#data-3').innerHTML = bank;
+}
+
 // -------------------------------------------------------------// Creation du listener sur le wookie (et les helpers) qui incremente le nombre de clic manuel et genere des credits par clic
-
-// function test(){
-//   let pointAdded = document.createElement('div');
-//   pointAdded.innerText = `+${credPerOrganicClickPower}`;
-//   pointAdded.classList.add('pointAdded', 'unselectable');
-//   clickWookie.appendChild(pointAdded);
-
-
-//   OrganicClickTotal++;
-//   credPerOrganicClickTotal += credPerOrganicClickPower;
-//   document.querySelector('footer>p').innerText = `${OrganicClickTotal} clicks`;
-
-
-//   bank = credPerOrganicClickTotal + credPerSecondTotal;
-//   document.querySelector('#data-3').innerHTML = bank;
-
-//   if (bank >= 5){
-//     ewokHelper.style.filter = 'none';
-//     ewokHelper.addEventListener('click', function(){
-//       bank -= 5;
-//       document.querySelector('#data-3').innerText = bank;
-//     });
-//     };
-
-// }
-
-
-
-
-
 
 
 document.querySelector('footer>p').innerText = `${OrganicClickTotal} clicks`;
 
+
 clickWookie.addEventListener('click', function () {
-  let pointAdded = document.createElement('div');
-  pointAdded.innerText = `+${credPerOrganicClickPower}`;
-  pointAdded.classList.add('pointAdded');
-  clickWookie.appendChild(pointAdded);
-  setTimeout(function () {
-    pointAdded.remove();
-  }, 3000);
+  
+  plusPointPosition()
 
-  OrganicClickTotal++;
-  credPerOrganicClickTotal += credPerOrganicClickPower;
-  document.querySelector('footer>p').innerText = `${OrganicClickTotal} clicks`;
+  incrementManuelClick()
 
+  incrementTotalToHtml()
 
-  bank = credPerOrganicClickTotal + credPerSecondTotal;
-  document.querySelector('#data-3').innerHTML = bank;
   ewokOK();
-  console.log(bank);
+
   }
 );
 
@@ -156,26 +143,7 @@ function ewokOK(){
   }
   );
 
-  // ------------------------------------------------------------------------------------------------------------------------------------------BANK
-  //similaire a la fonction par seconde mais plus rapide pour
-  // instant MAJ clic manuel + fusion des sous-totaux de clic auto et de clic manuel et incription au dom
-
-
-
-// ------------------------------------------------------------------------------------------------------------------------------------------BANK
-//similaire a la fonction par seconde mais plus rapide pour
-// instant MAJ clic manuel + fusion des sous-totaux de clic auto et de clic manuel et incription au dom
-
-// function manuelClicRefresh() {
-//   for (let i = 0; i < 1; i++) {
-//     document.querySelector('#data-3').innerHTML =
-//       credPerOrganicClickTotal + credPerSecondTotal;
-//   }
-// }
-// setInterval(manuelClicRefresh, 1);
-
-
-
+ 
 // --------------------------------------------------------------------------------------------------------------------------------------------parametre
 // Image Death Star dans paramButton
 paramContainer.innerHTML =
@@ -212,12 +180,6 @@ forceOn.addEventListener('click', function () {
 
 // -------------------------------------------------------------------------------------------------------------------------creation du pop up click power
 
-// clickWookie.addEventListener('click', function () {
-//   function reflect(e) {
-
-//   }
-//   reflect();
-// });
 
 // --------------------recuperation des positions sur le dom
 
