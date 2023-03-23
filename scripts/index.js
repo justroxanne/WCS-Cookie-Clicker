@@ -9,13 +9,17 @@ let manualCounter = document.querySelector('footer');
 let settingsPanel = document.querySelector('.settings-panel');
 let returnButton = document.querySelector('.return-button');
 let clickWookie = document.querySelector('.wookie_clicker');
-let ewokHelper = document.querySelector(".ewok");
+let ewokHelper = document.querySelector('.ewok');
 let credPerSecondPower = 0;
 let credPerSecondTotal = 0;
 let credPerOrganicClickPower = 2;
 let credPerOrganicClickTotal = 0;
 let OrganicClickTotal = 0;
 let bank = 0;
+
+
+console.log(credPerOrganicClickTotal);
+
 
 
 
@@ -61,9 +65,7 @@ for (let i = 0; i < allCounter.length; i++) {
   }
 }
 
-
 // ------------------------------------------------------------------------------------------------//creation de la fonction du counter clic/second
-
 
 document.querySelector('#data-1').innerHTML = credPerSecondPower;
 
@@ -75,7 +77,6 @@ document.querySelector('#data-3').innerHTML = bank;
 
 
 //creation de la fonction du counter clic/second
-
 
 function increase() {
   for (let i = 0; i < 1; i++) {
@@ -91,13 +92,16 @@ document.querySelector('footer>p').innerText = `${OrganicClickTotal} clicks`;
 clickWookie.addEventListener('click', function () {
   let pointAdded = document.createElement('div');
   pointAdded.innerText = `+${credPerOrganicClickPower}`;
-  pointAdded.classList.add('pointAdded', 'unselectable');
+  pointAdded.classList.add('pointAdded');
   clickWookie.appendChild(pointAdded);
-
+  setTimeout(function () {
+    pointAdded.remove();
+  }, 3000);
 
   OrganicClickTotal++;
   credPerOrganicClickTotal += credPerOrganicClickPower;
   document.querySelector('footer>p').innerText = `${OrganicClickTotal} clicks`;
+
 
     //similaire a la fonction par seconde mais plus rapide pour instant MAJ clic manuel + fusion des sous-totaux de clic auto et de clic manuel et incription au dom
 
@@ -109,8 +113,10 @@ clickWookie.addEventListener('click', function () {
     //};
 
 
+  console.log(bank.innerText);
 
   //Débloquage du helper ewok avec 5credits/sec en plus pour un cout de 50 credits
+
 
     if (bank >= 5){
       ewokHelper.style.filter = 'none';
@@ -119,21 +125,18 @@ clickWookie.addEventListener('click', function () {
 
 
 
+  // ------------------------------------------------------------------------------------------------------------------------------------------BANK
+  //similaire a la fonction par seconde mais plus rapide pour
+  // instant MAJ clic manuel + fusion des sous-totaux de clic auto et de clic manuel et incription au dom
 
-
-// ------------------------------------------------------------------------------------------------------------------------------------------BANK
-//similaire a la fonction par seconde mais plus rapide pour
-// instant MAJ clic manuel + fusion des sous-totaux de clic auto et de clic manuel et incription au dom
-
-function manuelClicRefresh() {
-  for (let i = 0; i < 1; i++) {
-    document.querySelector('#data-3').innerHTML =
-      credPerOrganicClickTotal + credPerSecondTotal;
+  function manuelClicRefresh() {
+    for (let i = 0; i < 1; i++) {
+      document.querySelector('#data-3').innerHTML =
+        credPerOrganicClickTotal + credPerSecondTotal;
+    }
   }
-}
-setInterval(manuelClicRefresh, 1);
+  setInterval(manuelClicRefresh, 1);
 });
-
 
 // --------------------------------------------------------------------------------------------------------------------------------------------parametre
 // Image Death Star dans paramButton
@@ -142,12 +145,11 @@ paramContainer.innerHTML =
 
 //Recuperation / Declaration ici du bouton des setings (death star)
 let settingsButton = document.querySelector('.deathstar-settings');
-
 //cAu click sur le bouton settings > affichage du panneau des paranetres
+
 settingsButton.addEventListener('click', function () {
   settingsPanel.style.display = 'flex';
 });
-
 //Sortie des settings si on clique sur le death star
 //preventDefault pour eviter de reset, verifier si necessaire
 
@@ -156,7 +158,19 @@ returnButton.addEventListener('click', function (e) {
   settingsPanel.style.display = 'none';
 });
 
+// creation de l'evenement click sur la div on darkmode
 
+let darkOn = document.querySelector('.sith');
+darkOn.addEventListener('click', function () {
+  clickWookie.innerHTML = `<img src="./FinalImages/kyloRen.png" alt="chewbacca kawaii" width="100%">`;
+});
+
+// creation de l'evenement click sur la div off
+
+let forceOn = document.querySelector('.rebel');
+forceOn.addEventListener('click', function () {
+  clickWookie.innerHTML = `<img src="./FinalImages/chewie.png" alt="chewbacca kawaii" width="100%">`;
+});
 
 // -------------------------------------------------------------------------------------------------------------------------creation du pop up click power
 
@@ -183,4 +197,3 @@ returnButton.addEventListener('click', function (e) {
 //   position.y--;
 //   popPosition.style.top = position.y + 'px';
 // }, 10);
-

@@ -148,32 +148,47 @@ header {
 .language {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
+  gap: 7em;
 }
 
 .darkmode {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
   align-items: center;
-  /*  gap: 1em; */
+  justify-content: center;
+  gap: 5em;
 }
 
-.on {
-  background: #02f602;
-  width: 2em;
-  height: 2em;
-  border-radius: 50% 50%;
-  border: 0.1em black solid;
+.rebel {
+  width: 3em;
+  height: 3em;
 }
 
-.off {
-  background: #af0404;
-  width: 2em;
-  height: 2em;
-  border-radius: 50% 50%;
-  border: 0.1em black solid;
+.rebel:active {
+  animation: zoomOff;
+  animation-duration: 0.1s;
+}
+
+.sith {
+  width: 3em;
+  height: 3em;
+}
+
+.sith:active {
+  animation: zoomOff;
+  animation-duration: 0.1s;
+}
+
+.param-container>img:active {
+  animation: zoomOff;
+  animation-duration: 0.1s;
+}
+
+.language>img:active {
+  animation: zoomOff;
+  animation-duration: 0.1s;
 }
 
 .helpers {
@@ -274,6 +289,16 @@ footer {
   /*   margin: auto; */
 }
 
+.pointAdded {
+  z-index: 90;
+  font-size: 25px;
+  font-family: Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: bold;
+  position: absolute;
+  animation: bye 3s, casper 3s;
+  animation-fill-mode: forwards;
+}
+
 /* Adaptation au format Desktop avec l'utilisation des media queries */
 
 @media screen and (min-width: 800px) {
@@ -322,15 +347,20 @@ footer {
   header {
     height: 10%;
   }
-}
 
-.pointAdded {
-  z-index: 90;
-  font-size: 25px;
-  font-family: Tahoma, Geneva, Verdana, sans-serif;
-  font-weight: bold;
-  position: absolute;
-  animation: bye 3s, casper 3s;
-  animation-fill-mode: forwards;
-}
+  language {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5em;
+  }
 
+  .darkmode {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+
+}
