@@ -16,7 +16,7 @@ let yodaHelper = document.querySelector('.yoda');
 let xwingHelper = document.querySelector('.xwing');
 let falconHelper = document.querySelector('.falcon');
 let helpers = document.querySelectorAll('.helper');
-let credPerSecondPower = 0;
+let credPerSecondPower = 1;
 let credPerSecondTotal = 0;
 let credPerOrganicClickPower = 1;
 let credPerOrganicClickTotal = 0;
@@ -29,6 +29,10 @@ let bank = 0;
 // let xwingPrice = 10000;
 // let falconPrice = 1000000;
 let prices = [5, 10, 15, 20, 25, 30];
+// Tableau des améliorations avec powers[i] = index du helper, et powers[i][j] = amélioration
+// powers[i][0] = credit/clic, powers[i][1] = credits/sec
+
+let powers = [[1, 0], [0, 1], [10, 0], [0, 10], [100, 0], [0, 0]];
 
 
 
@@ -84,23 +88,14 @@ document.querySelector('#data-2').innerHTML = credPerOrganicClickPower;
 document.querySelector('#data-3').innerHTML = bank;
 
 
-//creation de la fonction du counter clic/second
-function increase() {
-  for (let i = 0; i < 1; i++) {
-    credPerSecondTotal = credPerSecondTotal + credPerSecondPower;
-  }
-}
-setInterval(increase, 1000);
-
 //Fonction position +1, +2, ...
 const plusPointPosition = (posHoriz, posVert) => {
   let pointAdded = document.createElement('div');
   pointAdded.innerText = `+${credPerOrganicClickPower}`;
   pointAdded.classList.add('pointAdded'); //class qui donne le style et l'animation
-  clickWookie.appendChild(pointAdded);
-  console.log(`${posHoriz}px`)
   pointAdded.style.left = `${posHoriz}px`
   pointAdded.style.top = `${posVert}px`
+  clickWookie.appendChild(pointAdded);
 
   //Purge des div crees
   setTimeout(function () {
@@ -115,6 +110,15 @@ const incrementManuelClick = () => {
   document.querySelector('footer>p').innerText = `${OrganicClickTotal} clicks`;
 }
 
+//creation de la fonction du counter clic/second
+function increase() {
+  for (let i = 0; i < 1; i++) {
+    credPerSecondTotal = credPerSecondTotal + credPerSecondPower;
+  }
+}
+setInterval(increase, 1000);
+
+
 //Fonction increment total et insertion au HTML
 const incrementTotalToHtml = () => {
   bank = credPerOrganicClickTotal + credPerSecondTotal;
@@ -125,11 +129,37 @@ const incrementTotalToHtml = () => {
 
 /*-----------------------------------------Fonction de débloquage d'un helper---------------*/
 
-function unlockHelper(helperPrice, helper){
+const unlockHelper = (helperPrice, helper) => {
   if (bank >= helperPrice){
     helper.style.filter= 'none';
   }
 }
+
+const buyHelper = (helperPrice, helper) => {
+  helper.addEventListener('click', function(){
+    if (bank >= helperPrice){
+    bank -= helperPrice;
+    credPerOrganicClickTotal -= helperPrice;
+    document.querySelector('#data-3').innerText = bank;
+    if (helper === helpers[0]){
+      credPerOrganicClickPower ++;
+      document.querySelector('#data-2').innerText = credPerOrganicClickPower;
+    } else if (helper === helpers[1]){
+      credPerSecondPower ++;
+      document.querySelector('#data-1').innerText = credPerSecondPower;
+    }
+    }
+  })
+}
+
+// const improve = (power) => {
+//   for (let j = 0; j < power.length; j++){
+//   credPerOrganicClickPower += power[0];
+//   credPerSecondPower += power[1];
+//   document.querySelector('#data-2').innerText = credPerOrganicClickPower;
+//   document.querySelector('#data-1').innerText = credPerSecondPower;
+//   }
+// };
 
 
 
@@ -141,6 +171,7 @@ document.querySelector('footer>p').innerText = `${OrganicClickTotal} clicks`;
 
 
 clickWookie.addEventListener('click', function (event) {
+  event.preventDefault();
 
   let posX = event.offsetX;
   let posY = event.offsetY;
@@ -150,39 +181,15 @@ clickWookie.addEventListener('click', function (event) {
   incrementManuelClick();
 
   incrementTotalToHtml();
-
   for(let i = 0; i < helpers.length; i++){
     unlockHelper(prices[i], helpers[i]);
     }
-  }
-);
+});
 
 
+  buyHelper(prices[0], helpers[0]);
+  buyHelper(prices[1], helpers[1]);
 
-
-
-
-
-
-
-  // ewokHelper.addEventListener('click', function(){
-  //   if (bank >= ewokPrice){
-  //   bank -= ewokPrice;
-  //   credPerOrganicClickTotal -= ewokPrice;
-  //   document.querySelector('#data-3').innerText = bank;
-  //   credPerOrganicClickPower ++;
-  //   document.querySelector('#data-2').innerText = credPerOrganicClickPower;}
-  // }
-  // );
-
-  // function c3poOk(){
-  //   if(bank >= c3poPrice){
-      
-  //   }
-  // }
-  
-
- 
 // --------------------------------------------------------------------------------------------------------------------------------------------parametre
 // Image Death Star dans paramButton
 paramContainer.innerHTML =
