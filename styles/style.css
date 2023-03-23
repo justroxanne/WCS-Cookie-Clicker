@@ -2,7 +2,7 @@
 
 @font-face {
   font-family: 'StarJedi';
-  src: url('/Fonts/star_jedi/Starjedi.ttf');
+  src: url('../Fonts/star_jedi/Starjedi.ttf');
 }
 
 :root {
@@ -55,7 +55,7 @@
 }
 
 body {
-  background-image: url('/FinalImages/background-mobile.jpg');
+  background-image: url('../FinalImages/background-mobile.jpg');
   height: 100vh;
   width: 100vw;
   background-size: cover;
@@ -235,12 +235,12 @@ header {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   grid-template-rows: repeat(15, 1fr);
-  position: relative;
 }
 
 .wookie_clicker {
   grid-column: 4 / 10;
   grid-row: 2 / 11;
+  position: relative;
 }
 
 .ewok {
@@ -290,7 +290,6 @@ footer {
 }
 
 .pointAdded {
-  z-index: 90;
   font-size: 25px;
   font-family: Tahoma, Geneva, Verdana, sans-serif;
   font-weight: bold;
@@ -303,7 +302,7 @@ footer {
 
 @media screen and (min-width: 800px) {
   body {
-    background-image: url('/FinalImages/background-desktop.jpg');
+    background-image: url('../FinalImages/background-desktop.jpg');
     background-size: cover;
   }
 
