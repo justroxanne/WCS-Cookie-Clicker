@@ -118,13 +118,12 @@ const incrementManuelClick = () => {
 };
 
 //creation de la fonction du counter clic/second
-
-function increase() {
+var increase = window.setInterval(function() {
   for (let i = 0; i < 1; i++) {
     credPerSecondTotal = credPerSecondTotal + credPerSecondPower;
+    incrementTotalToHtml()
   }
-}
-setInterval(increase, 1000);
+}, 1000)
 
 //Fonction increment total et insertion au HTML
 const incrementTotalToHtml = () => {
