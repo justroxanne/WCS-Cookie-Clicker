@@ -149,9 +149,19 @@ const buyHelper = (helperPrice, helper) => {
       } else if (helper === helpers[1]) {
         credPerSecondPower++;
         document.querySelector('#data-1').innerText = credPerSecondPower;
+      } else if (helper === helpers[2]) {
+        credPerOrganicClickPower++;
+        document.querySelector('#data-2').innerText = credPerOrganicClickPower;
+      } else if (helper === helpers[3]) {
+        credPerSecondPower++;
+        document.querySelector('#data-1').innerText = credPerSecondPower;
+      } else if (helper === helpers[4]) {
+        credPerOrganicClickPower++;
+        document.querySelector('#data-2').innerText = credPerOrganicClickPower;
+      } else if (helper === helpers[5]) {
+        alert("GG LE S")
       }
-    }
-  });
+}});
 };
 
 // -------------------------------------------------------------// Creation du listener sur le wookie (et les helpers) qui incremente le nombre de clic manuel et genere des credits par clic
@@ -175,6 +185,11 @@ clickWookie.addEventListener('click', function (event) {
 
 buyHelper(prices[0], helpers[0]);
 buyHelper(prices[1], helpers[1]);
+buyHelper(prices[2], helpers[2]);
+buyHelper(prices[3], helpers[3]);
+buyHelper(prices[4], helpers[4]);
+buyHelper(prices[5], helpers[5]);
+
 
 // --------------------------------------------------------------------------------------------------------------------------------------------parametre
 // Image Death Star dans paramButton
@@ -222,7 +237,7 @@ darkOn.addEventListener('click', function () {
   clickWookie.innerHTML = `<img src="./FinalImages/kyloRen.png" alt="KyloRen kawaii" width="100%">`;
   ewokHelper.innerHTML = `<img src="./FinalImages/stormtrooperbasic.png" alt="stormtrooper kawaii" width="85%">`;
   c3poHelper.innerHTML = `<img src="./FinalImages/stormTrooper.png" alt="stormTrooper kawaii" width="85%">`;
-  r2d2Helper.innerHTML = `<img src="./FinalImages/ATAT.png" alt="ATAT kawaii" width="65%">`;
+  r2d2Helper.innerHTML = `<img src="./FinalImages/ATAT.png" alt="ATAT kawaii" width="85%">`;
   yodaHelper.innerHTML = `<img src="./FinalImages/TieFighter.png" alt="TieFighter kawaii" width="80%">`;
   xwingHelper.innerHTML = `<img src="./FinalImages/darthMaul.png" alt="darthMaul kawaii" width="85%">`;
   falconHelper.innerHTML = `<img src="./FinalImages/DarthVador.png" alt="DarthVador kawaii" width="85%">`;
@@ -233,7 +248,7 @@ darkOn.addEventListener('click', function () {
 
 let forceOn = document.querySelector('.rebel');
 forceOn.addEventListener('click', function () {
-  clickWookie.innerHTML = `<img src="./FinalImages/chewie.png" alt="chewbacca kawaii" wi  dth="100%">`;
+  clickWookie.innerHTML = `<img src="./FinalImages/chewie.png" alt="chewbacca kawaii" width="100%">`;
   ewokHelper.innerHTML = `<img src="./FinalImages/ewok.png" alt="ewok kawaii" width="85%"></img>`;
   r2d2Helper.innerHTML = `<img src="./FinalImages/R2D2.png" alt="R2D2 kawaii" width="85%"></img>`;
   c3poHelper.innerHTML = `<img src="./FinalImages/C3PO.png" alt="C3PO kawaii" width="85%"></img>`;
