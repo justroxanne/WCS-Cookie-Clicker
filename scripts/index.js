@@ -17,12 +17,14 @@ let xwingHelper = document.querySelector('.xwing');
 let falconHelper = document.querySelector('.falcon');
 let helpers = document.querySelectorAll('.helper');
 let bg = document.querySelector('body');
+let darksettings = document.querySelector('.settings-panel');
 let credPerSecondPower = 0;
 let credPerSecondTotal = 0;
 let credPerOrganicClickPower = 1;
 let credPerOrganicClickTotal = 0;
 let OrganicClickTotal = 0;
 let bank = 0;
+let helpersSettings = document.querySelectorAll('.helpers > div');
 // let ewokPrice = 50;
 // let c3poPrice = 500;
 // let r2d2Price = 1000;
@@ -242,6 +244,13 @@ darkOn.addEventListener('click', function () {
   xwingHelper.innerHTML = `<img src="./FinalImages/darthMaul.png" alt="darthMaul kawaii" width="85%">`;
   falconHelper.innerHTML = `<img src="./FinalImages/DarthVador.png" alt="DarthVador kawaii" width="85%">`;
   document.body.style.backgroundImage = "url('/FinalImages/sithBG.jpg')";
+  settingsPanel.style.backgroundImage = "url('/FinalImages/sithBG.jpg')";
+  helpersSettings[0].innerHTML = `<img src="./FinalImages/stormtrooperbasic.png" alt="stormtrooper kawaii" width="85%"> Power : 1 credit/clic, Price : ${prices[0]} credits`;
+  helpersSettings[1].innerHTML = `<img src="./FinalImages/stormTrooper.png" alt="stormTrooper kawaii" width="85%"> Power : 1 credit/second, Price : ${prices[1]} credits`;
+  helpersSettings[2].innerHTML = `<img src="./FinalImages/ATAT.png" alt="ATAT kawaii" width="85%"> Power : 10 credit/clic, Price : ${prices[2]} credits`;
+  helpersSettings[3].innerHTML = `<img src="./FinalImages/TieFighter.png" alt="TieFighter kawaii" width="80%"> Power : 10 credit/second , Price : ${prices[3]} credits`;
+  helpersSettings[4].innerHTML = `<img src="./FinalImages/darthMaul.png" alt="darthMaul kawaii" width="85%"> Power : 100 credit/clic, Price : ${prices[4]} credits`;
+  helpersSettings[5].innerHTML = `<img src="./FinalImages/DarthVador.png" alt="DarthVador kawaii" width="85%"> Power : You win !! , Price : ${prices[5]} credits`;
 });
 
 // creation de l'evenement click sur la div rebel
@@ -255,6 +264,12 @@ forceOn.addEventListener('click', function () {
   yodaHelper.innerHTML = `<img src="./FinalImages/Yoda.png" alt="yoda kawaii" width="85%">`;
   xwingHelper.innerHTML = `<img src="./FinalImages/xwing.png" alt="X-wing kawaii" width="85%">`;
   falconHelper.innerHTML = `<img src="./FinalImages/Falcon.png" alt="millenium falcon kawaii" width="85%">`;
-  document.body.style.backgroundImage =
-    "url('/FinalImages/background-desktop.jpg')";
+  document.body.style.backgroundImage ="url('/FinalImages/background-desktop.jpg')";
+  settingsPanel.style.backgroundImage = "url('/FinalImages/background-desktop.jpg')";
+  helpersSettings[0].innerHTML = `<img src="./FinalImages/ewok.png" alt="ewok kawaii" width="85%"></img> Power : 1 credit/clic, Price : ${prices[0]} credits`;
+  helpersSettings[1].innerHTML = `<img src="./FinalImages/R2D2.png" alt="R2D2 kawaii" width="85%"></img> Power : 1 credit/second, Price : ${prices[1]} credits`;
+  helpersSettings[2].innerHTML = `<img src="./FinalImages/C3PO.png" alt="C3PO kawaii" width="85%"></img> Power : 10 credit/clic, Price : ${prices[2]} credits`;
+  helpersSettings[3].innerHTML = `<img src="./FinalImages/Yoda.png" alt="yoda kawaii" width="85%"> Power : 10 credit/second , Price : ${prices[3]} credits`;
+  helpersSettings[4].innerHTML = `<img src="./FinalImages/xwing.png" alt="X-wing kawaii" width="85%"> Power : 100 credit/clic, Price : ${prices[4]} credits`;
+  helpersSettings[5].innerHTML = `<img src="./FinalImages/Falcon.png" alt="millenium falcon kawaii" width="85%"> Power : You win !! , Price : ${prices[5]} credits`;
 });
