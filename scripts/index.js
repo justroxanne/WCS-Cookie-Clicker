@@ -24,7 +24,12 @@ let credPerOrganicClickPower = 1;
 let credPerOrganicClickTotal = 0;
 let OrganicClickTotal = 0;
 let bank = 0;
+
+const sithTheme = new Audio('./FinalImages/sith.mp3');
+const rebelTheme = new Audio('./FinalImages/rebel.mp3');
 let helpersSettings = document.querySelectorAll('.helpers > div');
+
+
 // let ewokPrice = 50;
 // let c3poPrice = 500;
 // let r2d2Price = 1000;
@@ -235,6 +240,8 @@ document.getElementById(
 
 let darkOn = document.querySelector('.sith');
 darkOn.addEventListener('click', function () {
+  sithTheme.play();
+  rebelTheme.pause();
   clickWookie.innerHTML = `<img src="./FinalImages/kyloRen.png" alt="KyloRen kawaii" width="100%">`;
   ewokHelper.innerHTML = `<img src="./FinalImages/stormtrooperbasic.png" alt="stormtrooper kawaii" width="85%">`;
   c3poHelper.innerHTML = `<img src="./FinalImages/stormTrooper.png" alt="stormTrooper kawaii" width="85%">`;
@@ -256,6 +263,10 @@ darkOn.addEventListener('click', function () {
 
 let forceOn = document.querySelector('.rebel');
 forceOn.addEventListener('click', function () {
+
+  rebelTheme.play();
+  sithTheme.pause();
+
   clickWookie.innerHTML = `<img src="./FinalImages/chewie.png" alt="chewbacca kawaii" width="100%">`;
   ewokHelper.innerHTML = `<img src="./FinalImages/ewok.png" alt="ewok kawaii" width="85%"></img>`;
   r2d2Helper.innerHTML = `<img src="./FinalImages/R2D2.png" alt="R2D2 kawaii" width="85%"></img>`;
