@@ -224,6 +224,14 @@ header {
   height: auto;
 }
 
+img {
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+
 /* Clicker and helpers style with a grid */
 
 .helper {
@@ -332,7 +340,7 @@ footer {
   }
 
   .settings-panel {
-    background-image: url(/FinalImages/background-desktop.jpg);
+    background-image: url(../FinalImages/background-desktop.jpg);
   }
 
   .counter-size {
