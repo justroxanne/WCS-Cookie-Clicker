@@ -17,14 +17,18 @@ let xwingHelper = document.querySelector('.xwing');
 let falconHelper = document.querySelector('.falcon');
 let helpers = document.querySelectorAll('.helper');
 let bg = document.querySelector('body');
+let darksettings = document.querySelector('.settings-panel');
 let credPerSecondPower = 0;
 let credPerSecondTotal = 0;
 let credPerOrganicClickPower = 1;
 let credPerOrganicClickTotal = 0;
 let OrganicClickTotal = 0;
 let bank = 0;
+
 const sithTheme = new Audio('./FinalImages/sith.mp3');
 const rebelTheme = new Audio('./FinalImages/rebel.mp3');
+let helpersSettings = document.querySelectorAll('.helpers > div');
+
 
 // let ewokPrice = 50;
 // let c3poPrice = 500;
@@ -99,9 +103,10 @@ document.querySelector('#data-3').innerHTML = bank;
 const plusPointPosition = (posHoriz, posVert) => {
   let pointAdded = document.createElement('div');
   pointAdded.innerText = `+${credPerOrganicClickPower}`;
-  pointAdded.classList.add('pointAdded'); //class qui donne le style et l'animation
   pointAdded.style.left = `${posHoriz}px`;
   pointAdded.style.top = `${posVert}px`;
+  pointAdded.classList.add('pointAdded'); //class qui donne le style et l'animation
+
   clickWookie.appendChild(pointAdded);
 
   //Purge des div crees
@@ -118,13 +123,12 @@ const incrementManuelClick = () => {
 };
 
 //creation de la fonction du counter clic/second
-
-function increase() {
+var increase = window.setInterval(function() {
   for (let i = 0; i < 1; i++) {
     credPerSecondTotal = credPerSecondTotal + credPerSecondPower;
+    incrementTotalToHtml()
   }
-}
-setInterval(increase, 1000);
+}, 1000)
 
 //Fonction increment total et insertion au HTML
 const incrementTotalToHtml = () => {
@@ -152,9 +156,19 @@ const buyHelper = (helperPrice, helper) => {
       } else if (helper === helpers[1]) {
         credPerSecondPower++;
         document.querySelector('#data-1').innerText = credPerSecondPower;
+      } else if (helper === helpers[2]) {
+        credPerOrganicClickPower++;
+        document.querySelector('#data-2').innerText = credPerOrganicClickPower;
+      } else if (helper === helpers[3]) {
+        credPerSecondPower++;
+        document.querySelector('#data-1').innerText = credPerSecondPower;
+      } else if (helper === helpers[4]) {
+        credPerOrganicClickPower++;
+        document.querySelector('#data-2').innerText = credPerOrganicClickPower;
+      } else if (helper === helpers[5]) {
+        alert("GG LE S")
       }
-    }
-  });
+}});
 };
 
 // -------------------------------------------------------------// Creation du listener sur le wookie (et les helpers) qui incremente le nombre de clic manuel et genere des credits par clic
@@ -165,7 +179,6 @@ clickWookie.addEventListener('click', function (event) {
 
   let posX = event.offsetX;
   let posY = event.offsetY;
-
   plusPointPosition(posX, posY);
 
   incrementManuelClick();
@@ -178,6 +191,11 @@ clickWookie.addEventListener('click', function (event) {
 
 buyHelper(prices[0], helpers[0]);
 buyHelper(prices[1], helpers[1]);
+buyHelper(prices[2], helpers[2]);
+buyHelper(prices[3], helpers[3]);
+buyHelper(prices[4], helpers[4]);
+buyHelper(prices[5], helpers[5]);
+
 
 // --------------------------------------------------------------------------------------------------------------------------------------------parametre
 // Image Death Star dans paramButton
@@ -227,19 +245,28 @@ darkOn.addEventListener('click', function () {
   clickWookie.innerHTML = `<img src="./FinalImages/kyloRen.png" alt="KyloRen kawaii" width="100%">`;
   ewokHelper.innerHTML = `<img src="./FinalImages/stormtrooperbasic.png" alt="stormtrooper kawaii" width="85%">`;
   c3poHelper.innerHTML = `<img src="./FinalImages/stormTrooper.png" alt="stormTrooper kawaii" width="85%">`;
-  r2d2Helper.innerHTML = `<img src="./FinalImages/ATAT.png" alt="ATAT kawaii" width="65%">`;
+  r2d2Helper.innerHTML = `<img src="./FinalImages/ATAT.png" alt="ATAT kawaii" width="85%">`;
   yodaHelper.innerHTML = `<img src="./FinalImages/TieFighter.png" alt="TieFighter kawaii" width="80%">`;
   xwingHelper.innerHTML = `<img src="./FinalImages/darthMaul.png" alt="darthMaul kawaii" width="85%">`;
   falconHelper.innerHTML = `<img src="./FinalImages/DarthVador.png" alt="DarthVador kawaii" width="85%">`;
   document.body.style.backgroundImage = "url('/FinalImages/sithBG.jpg')";
+  settingsPanel.style.backgroundImage = "url('/FinalImages/sithBG.jpg')";
+  helpersSettings[0].innerHTML = `<img src="./FinalImages/stormtrooperbasic.png" alt="stormtrooper kawaii" width="85%"> Power : 1 credit/clic, Price : ${prices[0]} credits`;
+  helpersSettings[1].innerHTML = `<img src="./FinalImages/stormTrooper.png" alt="stormTrooper kawaii" width="85%"> Power : 1 credit/second, Price : ${prices[1]} credits`;
+  helpersSettings[2].innerHTML = `<img src="./FinalImages/ATAT.png" alt="ATAT kawaii" width="85%"> Power : 10 credit/clic, Price : ${prices[2]} credits`;
+  helpersSettings[3].innerHTML = `<img src="./FinalImages/TieFighter.png" alt="TieFighter kawaii" width="80%"> Power : 10 credit/second , Price : ${prices[3]} credits`;
+  helpersSettings[4].innerHTML = `<img src="./FinalImages/darthMaul.png" alt="darthMaul kawaii" width="85%"> Power : 100 credit/clic, Price : ${prices[4]} credits`;
+  helpersSettings[5].innerHTML = `<img src="./FinalImages/DarthVador.png" alt="DarthVador kawaii" width="85%"> Power : You win !! , Price : ${prices[5]} credits`;
 });
 
 // creation de l'evenement click sur la div rebel
 
 let forceOn = document.querySelector('.rebel');
 forceOn.addEventListener('click', function () {
+
   rebelTheme.play();
   sithTheme.pause();
+
   clickWookie.innerHTML = `<img src="./FinalImages/chewie.png" alt="chewbacca kawaii" width="100%">`;
   ewokHelper.innerHTML = `<img src="./FinalImages/ewok.png" alt="ewok kawaii" width="85%"></img>`;
   r2d2Helper.innerHTML = `<img src="./FinalImages/R2D2.png" alt="R2D2 kawaii" width="85%"></img>`;
@@ -247,6 +274,12 @@ forceOn.addEventListener('click', function () {
   yodaHelper.innerHTML = `<img src="./FinalImages/Yoda.png" alt="yoda kawaii" width="85%">`;
   xwingHelper.innerHTML = `<img src="./FinalImages/xwing.png" alt="X-wing kawaii" width="85%">`;
   falconHelper.innerHTML = `<img src="./FinalImages/Falcon.png" alt="millenium falcon kawaii" width="85%">`;
-  document.body.style.backgroundImage =
-    "url('/FinalImages/background-desktop.jpg')";
+  document.body.style.backgroundImage ="url('/FinalImages/background-desktop.jpg')";
+  settingsPanel.style.backgroundImage = "url('/FinalImages/background-desktop.jpg')";
+  helpersSettings[0].innerHTML = `<img src="./FinalImages/ewok.png" alt="ewok kawaii" width="85%"></img> Power : 1 credit/clic, Price : ${prices[0]} credits`;
+  helpersSettings[1].innerHTML = `<img src="./FinalImages/R2D2.png" alt="R2D2 kawaii" width="85%"></img> Power : 1 credit/second, Price : ${prices[1]} credits`;
+  helpersSettings[2].innerHTML = `<img src="./FinalImages/C3PO.png" alt="C3PO kawaii" width="85%"></img> Power : 10 credit/clic, Price : ${prices[2]} credits`;
+  helpersSettings[3].innerHTML = `<img src="./FinalImages/Yoda.png" alt="yoda kawaii" width="85%"> Power : 10 credit/second , Price : ${prices[3]} credits`;
+  helpersSettings[4].innerHTML = `<img src="./FinalImages/xwing.png" alt="X-wing kawaii" width="85%"> Power : 100 credit/clic, Price : ${prices[4]} credits`;
+  helpersSettings[5].innerHTML = `<img src="./FinalImages/Falcon.png" alt="millenium falcon kawaii" width="85%"> Power : You win !! , Price : ${prices[5]} credits`;
 });
