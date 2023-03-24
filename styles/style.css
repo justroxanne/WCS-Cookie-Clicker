@@ -238,6 +238,16 @@ header {
   position: relative;
 }
 
+.pointAdded {
+  z-index: 90;
+  font-size: 25px;
+  font-family: Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: bold;
+  position: absolute;
+  animation: bye 3s, casper 3s;
+  animation-fill-mode: forwards;
+}
+
 .wookie_clicker {
   grid-column: 4 / 10;
   grid-row: 2 / 11;

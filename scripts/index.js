@@ -16,7 +16,8 @@ let yodaHelper = document.querySelector('.yoda');
 let xwingHelper = document.querySelector('.xwing');
 let falconHelper = document.querySelector('.falcon');
 let helpers = document.querySelectorAll('.helper');
-let credPerSecondPower = 1;
+let bg = document.querySelector('body');
+let credPerSecondPower = 0;
 let credPerSecondTotal = 0;
 let credPerOrganicClickPower = 1;
 let credPerOrganicClickTotal = 0;
@@ -114,6 +115,7 @@ const incrementManuelClick = () => {
 };
 
 //creation de la fonction du counter clic/second
+
 function increase() {
   for (let i = 0; i < 1; i++) {
     credPerSecondTotal = credPerSecondTotal + credPerSecondPower;
@@ -151,15 +153,6 @@ const buyHelper = (helperPrice, helper) => {
     }
   });
 };
-
-// const improve = (power) => {
-//   for (let j = 0; j < power.length; j++){
-//   credPerOrganicClickPower += power[0];
-//   credPerSecondPower += power[1];
-//   document.querySelector('#data-2').innerText = credPerOrganicClickPower;
-//   document.querySelector('#data-1').innerText = credPerSecondPower;
-//   }
-// };
 
 // -------------------------------------------------------------// Creation du listener sur le wookie (et les helpers) qui incremente le nombre de clic manuel et genere des credits par clic
 document.querySelector('footer>p').innerText = `${OrganicClickTotal} clicks`;
@@ -224,23 +217,15 @@ document.getElementById(
   'falcon-help'
 ).innerText = `Power : You win !! , Price : ${prices[5]} credits`;
 
-let ewok = document.querySelector('.ewok');
-let c3po = document.querySelector('.c3po');
-let r2d2 = document.querySelector('.r2d2');
-let yoda = document.querySelector('.yoda');
-let xwing = document.querySelector('.xwing');
-let falcon = document.querySelector('.falcon');
-let bg = document.querySelector('body');
-
 let darkOn = document.querySelector('.sith');
 darkOn.addEventListener('click', function () {
   clickWookie.innerHTML = `<img src="./FinalImages/kyloRen.png" alt="KyloRen kawaii" width="100%">`;
-  ewok.innerHTML = `<img src="./FinalImages/stormtrooperbasic.png" alt="stormtrooper kawaii" width="85%">`;
-  c3po.innerHTML = `<img src="./FinalImages/stormTrooper.png" alt="stormTrooper kawaii" width="85%">`;
-  r2d2.innerHTML = `<img src="./FinalImages/ATAT.png" alt="ATAT kawaii" width="65%">`;
-  yoda.innerHTML = `<img src="./FinalImages/TieFighter.png" alt="TieFighter kawaii" width="80%">`;
-  xwing.innerHTML = `<img src="./FinalImages/darthMaul.png" alt="darthMaul kawaii" width="85%">`;
-  falcon.innerHTML = `<img src="./FinalImages/DarthVador.png" alt="DarthVador kawaii" width="85%">`;
+  ewokHelper.innerHTML = `<img src="./FinalImages/stormtrooperbasic.png" alt="stormtrooper kawaii" width="85%">`;
+  c3poHelper.innerHTML = `<img src="./FinalImages/stormTrooper.png" alt="stormTrooper kawaii" width="85%">`;
+  r2d2Helper.innerHTML = `<img src="./FinalImages/ATAT.png" alt="ATAT kawaii" width="65%">`;
+  yodaHelper.innerHTML = `<img src="./FinalImages/TieFighter.png" alt="TieFighter kawaii" width="80%">`;
+  xwingHelper.innerHTML = `<img src="./FinalImages/darthMaul.png" alt="darthMaul kawaii" width="85%">`;
+  falconHelper.innerHTML = `<img src="./FinalImages/DarthVador.png" alt="DarthVador kawaii" width="85%">`;
   document.body.style.backgroundImage = "url('/FinalImages/sithBG.jpg')";
 });
 
@@ -249,12 +234,12 @@ darkOn.addEventListener('click', function () {
 let forceOn = document.querySelector('.rebel');
 forceOn.addEventListener('click', function () {
   clickWookie.innerHTML = `<img src="./FinalImages/chewie.png" alt="chewbacca kawaii" wi  dth="100%">`;
-  ewok.innerHTML = `<img src="./FinalImages/ewok.png" alt="ewok kawaii" width="85%"></img>`;
-  r2d2.innerHTML = `<img src="./FinalImages/R2D2.png" alt="R2D2 kawaii" width="85%"></img>`;
-  c3po.innerHTML = `<img src="./FinalImages/C3PO.png" alt="C3PO kawaii" width="85%"></img>`;
-  yoda.innerHTML = `<img src="./FinalImages/Yoda.png" alt="yoda kawaii" width="85%">`;
-  xwing.innerHTML = `<img src="./FinalImages/xwing.png" alt="X-wing kawaii" width="85%">`;
-  falcon.innerHTML = `<img src="./FinalImages/Falcon.png" alt="millenium falcon kawaii" width="85%">`;
+  ewokHelper.innerHTML = `<img src="./FinalImages/ewok.png" alt="ewok kawaii" width="85%"></img>`;
+  r2d2Helper.innerHTML = `<img src="./FinalImages/R2D2.png" alt="R2D2 kawaii" width="85%"></img>`;
+  c3poHelper.innerHTML = `<img src="./FinalImages/C3PO.png" alt="C3PO kawaii" width="85%"></img>`;
+  yodaHelper.innerHTML = `<img src="./FinalImages/Yoda.png" alt="yoda kawaii" width="85%">`;
+  xwingHelper.innerHTML = `<img src="./FinalImages/xwing.png" alt="X-wing kawaii" width="85%">`;
+  falconHelper.innerHTML = `<img src="./FinalImages/Falcon.png" alt="millenium falcon kawaii" width="85%">`;
   document.body.style.backgroundImage =
     "url('/FinalImages/background-desktop.jpg')";
 });
