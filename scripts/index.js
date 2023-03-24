@@ -31,7 +31,7 @@ const sithTheme = new Audio('./FinalImages/sith.mp3');
 const rebelTheme = new Audio('./FinalImages/rebel.mp3');
 let helpersSettings = document.querySelectorAll('.helpers > div');
 
-let prices = [5, 50, 100, 500, 10000, 1000000];
+let prices = [50, 500, 1000, 5000, 10000, 1000000];
 
 
 
