@@ -243,22 +243,14 @@ img {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   grid-template-rows: repeat(15, 1fr);
-  position: relative;
-}
-
-.pointAdded {
-  z-index: 90;
-  font-size: 25px;
-  font-family: Tahoma, Geneva, Verdana, sans-serif;
-  font-weight: bold;
-  position: absolute;
-  animation: bye 3s, casper 3s;
-  animation-fill-mode: forwards;
+  
 }
 
 .wookie_clicker {
   grid-column: 4 / 10;
   grid-row: 2 / 11;
+  position: relative;
+  user-select: none;
 }
 
 .ewok {
@@ -308,7 +300,6 @@ footer {
 }
 
 .pointAdded {
-  z-index: 90;
   font-size: 25px;
   font-family: Tahoma, Geneva, Verdana, sans-serif;
   font-weight: bold;

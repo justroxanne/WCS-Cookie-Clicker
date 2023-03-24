@@ -96,9 +96,10 @@ document.querySelector('#data-3').innerHTML = bank;
 const plusPointPosition = (posHoriz, posVert) => {
   let pointAdded = document.createElement('div');
   pointAdded.innerText = `+${credPerOrganicClickPower}`;
-  pointAdded.classList.add('pointAdded'); //class qui donne le style et l'animation
   pointAdded.style.left = `${posHoriz}px`;
   pointAdded.style.top = `${posVert}px`;
+  pointAdded.classList.add('pointAdded'); //class qui donne le style et l'animation
+
   clickWookie.appendChild(pointAdded);
 
   //Purge des div crees
@@ -172,7 +173,6 @@ clickWookie.addEventListener('click', function (event) {
 
   let posX = event.offsetX;
   let posY = event.offsetY;
-
   plusPointPosition(posX, posY);
 
   incrementManuelClick();
