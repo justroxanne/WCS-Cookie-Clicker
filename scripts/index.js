@@ -24,30 +24,16 @@ let credPerOrganicClickPower = 1;
 let credPerOrganicClickTotal = 0;
 let OrganicClickTotal = 0;
 let bank = 0;
+let helperz = document.querySelector('.helper');
+
 
 const sithTheme = new Audio('./FinalImages/sith.mp3');
 const rebelTheme = new Audio('./FinalImages/rebel.mp3');
 let helpersSettings = document.querySelectorAll('.helpers > div');
 
+let prices = [5, 50, 100, 500, 10000, 1000000];
 
-// let ewokPrice = 50;
-// let c3poPrice = 500;
-// let r2d2Price = 1000;
-// let yodaPrice = 5000;
-// let xwingPrice = 10000;
-// let falconPrice = 1000000;
-let prices = [5, 10, 15, 20, 25, 30];
-// Tableau des améliorations avec powers[i] = index du helper, et powers[i][j] = amélioration
-// powers[i][0] = credit/clic, powers[i][1] = credits/sec
 
-let powers = [
-  [1, 0],
-  [0, 1],
-  [10, 0],
-  [0, 10],
-  [100, 0],
-  [0, 0],
-];
 
 // ---------------------------------------------------------------------------------------------------------------------------style des counters
 //Positionnement des div counter-container et param-container dans le header
@@ -127,8 +113,29 @@ var increase = window.setInterval(function() {
   for (let i = 0; i < 1; i++) {
     credPerSecondTotal = credPerSecondTotal + credPerSecondPower;
     incrementTotalToHtml()
+    for (let i = 0; i < helpers.length; i++) {
+      unlockHelper(prices[i], helpers[i]);
+      
+    }
+  
   }
 }, 1000)
+
+var unlock = window.setInterval(function() {
+  
+    for (let i = 0; i < helpers.length; i++) {
+      lockHelper(prices[i], helpers[i]);
+    
+    }
+  
+  }
+, 1)
+
+
+
+
+
+
 
 //Fonction increment total et insertion au HTML
 const incrementTotalToHtml = () => {
@@ -143,6 +150,11 @@ const unlockHelper = (helperPrice, helper) => {
     helper.style.filter = 'none';
   }
 };
+const lockHelper = (helperPrice, helper) => {
+  if (bank <= helperPrice) {
+    helper.style.filter = 'saturate(0) opacity(60%)';
+  }
+}
 
 const buyHelper = (helperPrice, helper) => {
   helper.addEventListener('click', function () {
@@ -157,19 +169,25 @@ const buyHelper = (helperPrice, helper) => {
         credPerSecondPower++;
         document.querySelector('#data-1').innerText = credPerSecondPower;
       } else if (helper === helpers[2]) {
-        credPerOrganicClickPower++;
+        credPerOrganicClickPower += 10;
         document.querySelector('#data-2').innerText = credPerOrganicClickPower;
       } else if (helper === helpers[3]) {
-        credPerSecondPower++;
+        credPerSecondPower += 10;
         document.querySelector('#data-1').innerText = credPerSecondPower;
       } else if (helper === helpers[4]) {
-        credPerOrganicClickPower++;
+        credPerOrganicClickPower += 100;
         document.querySelector('#data-2').innerText = credPerOrganicClickPower;
       } else if (helper === helpers[5]) {
         alert("GG LE S")
-      }
-}});
+      };
+    } 
+  });
 };
+
+
+
+
+
 
 // -------------------------------------------------------------// Creation du listener sur le wookie (et les helpers) qui incremente le nombre de clic manuel et genere des credits par clic
 document.querySelector('footer>p').innerText = `${OrganicClickTotal} clicks`;
@@ -186,6 +204,7 @@ clickWookie.addEventListener('click', function (event) {
   incrementTotalToHtml();
   for (let i = 0; i < helpers.length; i++) {
     unlockHelper(prices[i], helpers[i]);
+    lockHelper(prices[i], helpers[i]);
   }
 });
 
